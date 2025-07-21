@@ -10,7 +10,7 @@ const menu = [
     { name: "Artistas", route: "/search" },
     { name: "Obras", route: "/search" },
     { name: "Movimientos", route: "/search" },
-    { name: "Contáctanos", route: "/contact" },
+    { name: "Contáctame", route: "/contact" },
 ];
 
 function toggleMenu() {
@@ -34,11 +34,13 @@ function toggleMenu() {
                 />
 
                 <!-- logo de la página -->
-                <img
-                    src="/public/images/navbar/logo.png"
-                    alt=""
-                    class="hidden w-20 sm:flex sm:h-full"
-                />
+                <RouterLink to="/">
+                    <img
+                        src="/public/images/navbar/logo.png"
+                        alt=""
+                        class="hidden w-20 sm:flex sm:h-full"
+                    />
+                </RouterLink>
 
                 <!-- titulo de la pagina -->
                 <h1 class="mx-5 text-xl sm:text-2xl">Enciclopedia de arte</h1>
@@ -58,10 +60,9 @@ function toggleMenu() {
                     >
                         Ingresar
                     </button>
-                    <img
-                        src="/public/images/navbar/user.png"
-                        alt="user-image"
-                        class="h-10 w-10"
+                    <i
+                        class="pi pi-user mx-2 my-1 items-center"
+                        style="font-size: 2rem"
                     />
                 </div>
             </RouterLink>

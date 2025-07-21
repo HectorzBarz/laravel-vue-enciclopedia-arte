@@ -2,8 +2,8 @@ import { createApp } from "vue";
 import App from "./src/App.vue";
 import router from "./src/router";
 import PrimeVue from "primevue/config";
-import Button from "primevue/button";
 import Aura from "@primeuix/themes/aura";
+import Image from "primevue/image";
 
 const app = createApp(App);
 
@@ -18,6 +18,6 @@ app.use(PrimeVue, {
 
 app.use(router);
 
-app.component("Button", Button);
+app.component("Image", Image);
 
 app.mount("#app");
