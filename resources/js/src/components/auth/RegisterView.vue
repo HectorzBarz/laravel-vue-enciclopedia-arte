@@ -21,7 +21,7 @@
                             class="h-12 rounded-sm border bg-white px-2 text-xl"
                             placeholder="Introduce tu nombre de usuario..."
                             required
-                            autocomplete
+                            autocomplete="username"
                         />
                     </div>
                     <!-- input de username -->
@@ -35,7 +35,7 @@
                             class="h-12 rounded-sm border bg-white px-2 text-xl"
                             placeholder="Introduce tu correo electrónico..."
                             required
-                            autocomplete
+                            autocomplete="email"
                         />
                     </div>
                     <!-- FIN input de email -->
