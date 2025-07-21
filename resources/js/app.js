@@ -12,11 +12,6 @@ app.use(PrimeVue, {
         preset: Aura,
         options: {
             darkModeSelector: ".fake-dark-selector", // trying to also force a non-usage of the dark mode
-            cssLayer: {
-                name: "primevue",
-                // Enable PrimeVue CSS layer and configure the tailwind styles to have higher specificity with layering
-                order: "tailwind-base, primevue, tailwind-utilities",
-            },
         },
     },
 });
