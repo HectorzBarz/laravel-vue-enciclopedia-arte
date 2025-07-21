@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
@@ -13,3 +13,5 @@
     --font-soul: "My+Soul&family=Roboto";
     --default-font-family: "Libertinus+Mono&family=My+Soul&family=Roboto";
 }
+
+@import "primeicons/primeicons.css";
