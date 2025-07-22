@@ -11,7 +11,7 @@ const props = defineProps({
         <img
             :src="`/images/${item.img}`"
             alt="art-piece-image"
-            class="h-56 w-full rounded-t-xl"
+            class="h-56 w-full rounded-t-xl 2xl:h-60"
         />
 
         <div class="w-full">

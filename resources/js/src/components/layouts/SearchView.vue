@@ -94,7 +94,7 @@ const items = [
 
 <template>
     <div
-        class="my-10 flex h-full flex-col rounded-2xl bg-violet-100 p-5 sm:mx-10 lg:mx-16 lg:flex-row xl:mx-36"
+        class="my-10 flex h-full flex-col rounded-2xl bg-violet-100 p-5 sm:mx-10 lg:mx-16 xl:mx-24 xl:flex-row 2xl:mx-28"
     >
         <!-- seccion del buscador -->
         <section>
@@ -138,7 +138,7 @@ const items = [
                         Opciones de Obras
                     </h3>
                     <div
-                        class="flex flex-col items-center justify-center gap-5 md:flex-row"
+                        class="flex flex-col items-center justify-center gap-5 xl:flex-row"
                     >
                         <input
                             type="number"
@@ -202,7 +202,7 @@ const items = [
                 </h3>
                 <!-- bloque donde se mostrarán los resultados: -->
                 <div
-                    class="xlpx-16 grid gap-5 px-20 sm:grid-cols-2 sm:px-8 xl:grid-cols-3 xl:gap-10"
+                    class="xlpx-16 grid gap-5 px-20 sm:grid-cols-2 sm:px-8 xl:grid-cols-3 xl:gap-10 2xl:grid-cols-4"
                 >
                     <ItemCardHolder
                         v-for="(item, index) in items"

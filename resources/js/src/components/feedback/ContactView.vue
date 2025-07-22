@@ -3,7 +3,7 @@
 <template>
     <!-- seccion de contacto -->
     <section
-        class="my-16 flex flex-col rounded-2xl bg-violet-100 md:mx-10 lg:mx-20 lg:flex-row"
+        class="my-16 flex flex-col rounded-2xl bg-violet-100 md:mx-10 lg:mx-20 lg:flex-row xl:m-36"
     >
         <!-- barra lateral con avatar y iconos redireccionando a mis perfiles -->
 
@@ -30,7 +30,7 @@
                         style="font-size: 2.5rem"
                     />
                 </a>
-                <a href="https://www.x.com/HectorzBarZ" target="_blank">
+                <a href="https://x.com/BarzHector" target="_blank">
                     <i
                         class="pi pi-twitter transition-colors hover:cursor-pointer hover:text-violet-500"
                         style="font-size: 2.5rem"

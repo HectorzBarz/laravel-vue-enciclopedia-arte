@@ -88,7 +88,7 @@ const movements = [
     <main>
         <!-- contenedor de todas las secciones del main -->
         <div
-            class="mx-12 my-5 flex flex-col rounded-2xl bg-violet-100 lg:mx-14 xl:mx-24 xl:flex-row xl:items-center 2xl:mx-32"
+            class="mx-12 my-5 flex flex-col rounded-2xl bg-violet-100 lg:mx-14 xl:mx-24 xl:flex-row xl:items-center 2xl:mx-28"
         >
             <!-- contenedor de las secciones "Obras", "Artistas" y "Artículos Recientes"-->
             <div class="w-full">
