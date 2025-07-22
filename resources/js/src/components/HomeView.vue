@@ -2,6 +2,9 @@
 import ItemCardHolder from "./layouts/ItemCardHolder.vue";
 import Quoue from "./home/Quoue.vue";
 import ArticleItemHolder from "./articles/ArticleItemHolder.vue";
+import ArtistItemHolder from "./artists/ArtistItemHolder.vue";
+import ArtPieceItemHolder from "./pieces/ArtPieceItemHolder.vue";
+import MovementItemHolder from "./movements/MovementItemHolder.vue";
 
 const articles = [
     {
@@ -23,6 +26,60 @@ const articles = [
         img: "ides-kihlen.jpg",
         title: "Ides Kihlen cumple 108 años: la pintora más longeva del arte argentino",
         date: "10/07/2025",
+    },
+];
+
+const artists = [
+    {
+        img: "francisco-de-goya.jpg",
+        title: "Francisco de Goya",
+        date: "22/07/2025",
+    },
+    {
+        img: "diego-velazquez.jpg",
+        title: "Diego Velázquez",
+        date: "22/07/2025",
+    },
+    {
+        img: "el-greco.jpg",
+        title: "El Greco",
+        date: "22/07/2025",
+    },
+];
+
+const artPieces = [
+    {
+        img: "impresion-sol-naciente.jpg",
+        title: "Impresión, sol naciente",
+        date: "22/07/2025",
+    },
+    {
+        img: "la-ejecucion-de-lady-jane-grey.jpg",
+        title: "La Ejecución de Lady Jane Grey",
+        date: "22/07/2025",
+    },
+    {
+        img: "ecce-hommo.jpg",
+        title: "Ecce Homo",
+        date: "22/07/2025",
+    },
+];
+
+const movements = [
+    {
+        img: "san-jeronimo-escribiendo.jpg",
+        title: "Barroco",
+        date: "1600–1750",
+    },
+    {
+        img: "la-muerte-de-viriato.jpg",
+        title: "Neoclasicismo",
+        date: "1750–1820",
+    },
+    {
+        img: "paseo-por-el-acantilado-de-pourville.jpg",
+        title: "Impresionismo",
+        date: "1872–1882",
     },
 ];
 </script>
@@ -48,9 +105,11 @@ const articles = [
                     <div
                         class="grid justify-center gap-5 px-5 sm:flex md:px-10"
                     >
-                        <ItemCardHolder />
-                        <ItemCardHolder />
-                        <ItemCardHolder />
+                        <ArtPieceItemHolder
+                            v-for="(artPiece, index) in artPieces"
+                            :key="index"
+                            :artPiece="artPiece"
+                        />
                     </div>
                 </section>
 
@@ -66,9 +125,11 @@ const articles = [
                     <div
                         class="grid justify-center gap-5 px-5 sm:flex md:px-10"
                     >
-                        <ItemCardHolder />
-                        <ItemCardHolder />
-                        <ItemCardHolder />
+                        <ArtistItemHolder
+                            v-for="(artist, index) in artists"
+                            :key="index"
+                            :artist="artist"
+                        />
                     </div>
                 </section>
 
@@ -84,9 +145,11 @@ const articles = [
                     <div
                         class="grid justify-center gap-5 px-5 sm:flex md:px-10"
                     >
-                        <ItemCardHolder />
-                        <ItemCardHolder />
-                        <ItemCardHolder />
+                        <MovementItemHolder
+                            v-for="(movement, index) in movements"
+                            :key="index"
+                            :movement="movement"
+                        />
                     </div>
                 </section>
             </div>

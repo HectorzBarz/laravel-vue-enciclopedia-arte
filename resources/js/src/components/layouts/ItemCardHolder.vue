@@ -1,10 +1,10 @@
 <template>
     <div
-        class="cursor-pointer shadow-lg transition-all delay-50 hover:scale-110"
+        class="cursor-pointer bg-violet-200 shadow-lg transition-all delay-50 hover:scale-110"
     >
         <slot name="item-image"></slot>
 
-        <div class="w-full bg-violet-200">
+        <div class="w-full">
             <h4 class="mb-1 line-clamp-2 px-5 pt-1 text-lg">
                 <slot name="item-title"></slot>
             </h4>
