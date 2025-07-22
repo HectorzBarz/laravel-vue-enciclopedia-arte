@@ -131,7 +131,7 @@ const items = [
                 <!-- FIN bloque de checkboxes para opciones de filtrado -->
 
                 <!-- opciones de obras -->
-                <div v-if="store.checked[1].checked" class="py-5">
+                <div v-if="store.checked[2].checked" class="py-5">
                     <h3
                         class="border-t-2 border-violet-200 py-2 text-center text-2xl"
                     >
@@ -160,7 +160,7 @@ const items = [
                 <!-- FIN opciones de obras -->
 
                 <!-- opciones moviminetos artisticos -->
-                <div v-if="store.checked[2].checked" class="flex flex-col py-5">
+                <div v-if="store.checked[3].checked" class="flex flex-col py-5">
                     <label
                         for="movement-select"
                         class="border-t-2 border-violet-200 py-2 text-center text-2xl"
@@ -202,7 +202,7 @@ const items = [
                 </h3>
                 <!-- bloque donde se mostrarán los resultados: -->
                 <div
-                    class="xlpx-16 grid gap-5 px-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-10 2xl:grid-cols-4"
+                    class="xlpx-16 grid gap-5 px-20 sm:grid-cols-2 sm:px-8 xl:grid-cols-3 xl:gap-10"
                 >
                     <ItemCardHolder
                         v-for="(item, index) in items"

@@ -5,6 +5,10 @@ export const useSearchStore = defineStore("search", () => {
     // state
     const checked = ref([
         {
+            name: "Artículos",
+            checked: false,
+        },
+        {
             name: "Artistas",
             checked: false,
         },
@@ -14,10 +18,6 @@ export const useSearchStore = defineStore("search", () => {
         },
         {
             name: "Movimientos",
-            checked: false,
-        },
-        {
-            name: "Artículos",
             checked: false,
         },
     ]);
