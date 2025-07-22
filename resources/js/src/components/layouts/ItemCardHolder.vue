@@ -2,6 +2,20 @@
     <div
         class="cursor-pointer shadow-lg transition-all delay-50 hover:scale-110"
     >
+        <slot name="item-image"></slot>
+
+        <div class="w-full bg-violet-200">
+            <h4 class="mb-1 line-clamp-2 px-5 pt-1 text-lg">
+                <slot name="item-title"></slot>
+            </h4>
+            <p class="px-5 pt-1 text-base">
+                <slot name="item-date"></slot>
+            </p>
+        </div>
+    </div>
+    <!-- <div
+        class="cursor-pointer shadow-lg transition-all delay-50 hover:scale-110"
+    >
         <img
             src="/public/images/article/Impresionismo_ejemplo.jpg"
             alt="article-image"
@@ -14,5 +28,5 @@
             </h4>
             <p class="px-5 pt-1 text-base">16/07/2025</p>
         </div>
-    </div>
+    </div> -->
 </template>

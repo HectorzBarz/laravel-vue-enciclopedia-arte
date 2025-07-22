@@ -1,6 +1,30 @@
 <script setup>
 import ItemCardHolder from "./layouts/ItemCardHolder.vue";
 import Quoue from "./home/Quoue.vue";
+import ArticleItemHolder from "./articles/ArticleItemHolder.vue";
+
+const articles = [
+    {
+        img: "weyant-festejada.jpg",
+        title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
+        date: "14/07/2025",
+    },
+    {
+        img: "tesoro-de-dahomey.jpg",
+        title: "El retorno del tesoro de Dahomey: justicia histórica en Benín",
+        date: "16/05/2025",
+    },
+    {
+        img: "jardin-de-las-delicias.jpg",
+        title: "El secreto del cuadro más mirado del Prado: “El jardín de las delicias”",
+        date: "16/04/2025",
+    },
+    {
+        img: "ides-kihlen.jpg",
+        title: "Ides Kihlen cumple 108 años: la pintora más longeva del arte argentino",
+        date: "10/07/2025",
+    },
+];
 </script>
 
 <template>
@@ -79,10 +103,11 @@ import Quoue from "./home/Quoue.vue";
                     </h3>
 
                     <div class="grid gap-5 px-5 sm:grid-cols-2 md:px-10">
-                        <ItemCardHolder />
-                        <ItemCardHolder />
-                        <ItemCardHolder />
-                        <ItemCardHolder />
+                        <ArticleItemHolder
+                            v-for="(article, index) in articles"
+                            :key="index"
+                            :article="article"
+                        />
                     </div>
                 </section>
             </div>
