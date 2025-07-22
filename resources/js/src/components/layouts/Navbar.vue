@@ -1,6 +1,11 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
+import { useSearchStore } from "../../stores/SearchStore";
+import { useRouter } from "vue-router";
+
+const store = useSearchStore();
+const router = useRouter();
 
 const menuVisible = ref(false);
 
@@ -15,6 +20,16 @@ const menu = [
 
 function toggleMenu() {
     menuVisible.value = !menuVisible.value;
+}
+
+function handleClick(item) {
+    // Reinicia todos los checkboxes
+    store.checked.forEach((opt) => {
+        opt.checked = opt.name === item.name;
+    });
+
+    // Redirige a la ruta correspondiente
+    router.push(item.route);
 }
 </script>
 
@@ -84,12 +99,11 @@ function toggleMenu() {
                 class="rounded-b-md bg-violet-300 px-2 text-xl shadow-lg shadow-gray-600"
             >
                 <li
-                    class="py-1 hover:text-violet-400 hover:underline"
+                    class="cursor-pointer py-1 hover:text-violet-400 hover:underline"
                     v-for="item of menu"
+                    @click="handleClick(item)"
                 >
-                    <RouterLink :to="item.route">
-                        {{ item.name }}
-                    </RouterLink>
+                    {{ item.name }}
                 </li>
             </ul>
         </div>
@@ -103,8 +117,9 @@ function toggleMenu() {
         <div v-for="item of menu" class="flex">
             <button
                 class="cursor-pointer gap-1 px-2.5 py-2 text-xl transition-colors delay-100 hover:text-violet-500 hover:underline"
+                @click="handleClick(item)"
             >
-                <RouterLink :to="item.route">{{ item.name }}</RouterLink>
+                {{ item.name }}
             </button>
         </div>
     </section>

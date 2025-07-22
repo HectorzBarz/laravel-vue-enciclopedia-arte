@@ -1,16 +1,9 @@
 <script></script>
 
 <template>
-    <!-- <i class="pi pi-check" style="font-size: 1rem"></i>
-    <i class="pi pi-times" style="font-size: 1.5rem"></i>
-    <i class="pi pi-search" style="font-size: 2rem"></i>
-    <i class="pi pi-user" style="font-size: 2.5rem"></i>
-    <br />
-    hola desde contact us view -->
-
     <!-- seccion de contacto -->
     <section
-        class="my-16 flex flex-col rounded-2xl bg-violet-100 md:mx-10 md:mx-20 lg:flex-row"
+        class="my-16 flex flex-col rounded-2xl bg-violet-100 md:mx-10 lg:mx-20 lg:flex-row"
     >
         <!-- barra lateral con avatar y iconos redireccionando a mis perfiles -->
 

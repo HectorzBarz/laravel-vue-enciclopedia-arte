@@ -1,26 +1,10 @@
 <script setup>
 import { ref } from "vue";
 import ItemCardHolder from "./ItemCardHolder.vue";
+import { useSearchStore } from "../../stores/SearchStore";
 
-// checkbox options en la zona de búsqueda
-const checked = ref([
-    {
-        name: "Artistas",
-        checked: false,
-    },
-    {
-        name: "Obras",
-        checked: false,
-    },
-    {
-        name: "Movimientos Artísticos",
-        checked: false,
-    },
-    {
-        name: "Artículos",
-        checked: false,
-    },
-]);
+// store de las checkboxes
+const store = useSearchStore();
 
 const menuMovements = [
     "Proto-Renacimiento",
@@ -128,7 +112,11 @@ const items = [
                 <!-- FIN barra de búsqueda -->
 
                 <!-- bloque de checkboxes para opciones de filtrado -->
-                <div v-for="(item, index) of checked" :key="index" class="pr-2">
+                <div
+                    v-for="(item, index) of store.checked"
+                    :key="index"
+                    class="pr-2"
+                >
                     <input
                         class="size-5"
                         type="checkbox"
@@ -143,7 +131,7 @@ const items = [
                 <!-- FIN bloque de checkboxes para opciones de filtrado -->
 
                 <!-- opciones de obras -->
-                <div v-if="checked[1].checked" class="py-5">
+                <div v-if="store.checked[1].checked" class="py-5">
                     <h3
                         class="border-t-2 border-violet-200 py-2 text-center text-2xl"
                     >
@@ -172,7 +160,7 @@ const items = [
                 <!-- FIN opciones de obras -->
 
                 <!-- opciones moviminetos artisticos -->
-                <div v-if="checked[2].checked" class="flex flex-col py-5">
+                <div v-if="store.checked[2].checked" class="flex flex-col py-5">
                     <label
                         for="movement-select"
                         class="border-t-2 border-violet-200 py-2 text-center text-2xl"
@@ -214,7 +202,7 @@ const items = [
                 </h3>
                 <!-- bloque donde se mostrarán los resultados: -->
                 <div
-                    class="xlpx-16 grid gap-5 px-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-10"
+                    class="xlpx-16 grid gap-5 px-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-10 2xl:grid-cols-4"
                 >
                     <ItemCardHolder
                         v-for="(item, index) in items"

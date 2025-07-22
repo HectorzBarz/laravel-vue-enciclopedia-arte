@@ -43,7 +43,7 @@ const artists = [
     },
 ];
 
-const artPieces = [
+const pieces = [
     {
         img: "pieces/impresion-sol-naciente.jpg",
         title: "Impresión, sol naciente",
@@ -102,7 +102,7 @@ const movements = [
                         class="grid justify-center gap-5 px-5 sm:flex md:px-10"
                     >
                         <ItemCardHolder
-                            v-for="(artPiece, index) in artPieces"
+                            v-for="(artPiece, index) in pieces"
                             :key="index"
                             :item="artPiece"
                         />

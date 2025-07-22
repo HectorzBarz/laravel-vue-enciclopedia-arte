@@ -4,6 +4,7 @@ import router from "./src/router";
 import PrimeVue from "primevue/config";
 import Aura from "@primeuix/themes/aura";
 import Image from "primevue/image";
+import { createPinia } from "pinia";
 
 const app = createApp(App);
 
@@ -17,6 +18,7 @@ app.use(PrimeVue, {
 });
 
 app.use(router);
+app.use(createPinia());
 
 app.component("Image", Image);
 
