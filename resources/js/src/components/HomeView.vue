@@ -1,29 +1,25 @@
 <script setup>
 import ItemCardHolder from "./layouts/ItemCardHolder.vue";
 import Quoue from "./home/Quoue.vue";
-import ArticleItemHolder from "./articles/ArticleItemHolder.vue";
-import ArtistItemHolder from "./artists/ArtistItemHolder.vue";
-import ArtPieceItemHolder from "./pieces/ArtPieceItemHolder.vue";
-import MovementItemHolder from "./movements/MovementItemHolder.vue";
 
 const articles = [
     {
-        img: "weyant-festejada.jpg",
+        img: "article/weyant-festejada.jpg",
         title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
         date: "14/07/2025",
     },
     {
-        img: "tesoro-de-dahomey.jpg",
+        img: "article/tesoro-de-dahomey.jpg",
         title: "El retorno del tesoro de Dahomey: justicia histórica en Benín",
         date: "16/05/2025",
     },
     {
-        img: "jardin-de-las-delicias.jpg",
+        img: "article/jardin-de-las-delicias.jpg",
         title: "El secreto del cuadro más mirado del Prado: “El jardín de las delicias”",
         date: "16/04/2025",
     },
     {
-        img: "ides-kihlen.jpg",
+        img: "article/ides-kihlen.jpg",
         title: "Ides Kihlen cumple 108 años: la pintora más longeva del arte argentino",
         date: "10/07/2025",
     },
@@ -31,17 +27,17 @@ const articles = [
 
 const artists = [
     {
-        img: "francisco-de-goya.jpg",
+        img: "artist/francisco-de-goya.jpg",
         title: "Francisco de Goya",
         date: "22/07/2025",
     },
     {
-        img: "diego-velazquez.jpg",
+        img: "artist/diego-velazquez.jpg",
         title: "Diego Velázquez",
         date: "22/07/2025",
     },
     {
-        img: "el-greco.jpg",
+        img: "artist/el-greco.jpg",
         title: "El Greco",
         date: "22/07/2025",
     },
@@ -49,17 +45,17 @@ const artists = [
 
 const artPieces = [
     {
-        img: "impresion-sol-naciente.jpg",
+        img: "pieces/impresion-sol-naciente.jpg",
         title: "Impresión, sol naciente",
         date: "22/07/2025",
     },
     {
-        img: "la-ejecucion-de-lady-jane-grey.jpg",
+        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
         title: "La Ejecución de Lady Jane Grey",
         date: "22/07/2025",
     },
     {
-        img: "ecce-hommo.jpg",
+        img: "pieces/ecce-hommo.jpg",
         title: "Ecce Homo",
         date: "22/07/2025",
     },
@@ -67,17 +63,17 @@ const artPieces = [
 
 const movements = [
     {
-        img: "san-jeronimo-escribiendo.jpg",
+        img: "movements/san-jeronimo-escribiendo.jpg",
         title: "Barroco",
         date: "1600–1750",
     },
     {
-        img: "la-muerte-de-viriato.jpg",
+        img: "movements/la-muerte-de-viriato.jpg",
         title: "Neoclasicismo",
         date: "1750–1820",
     },
     {
-        img: "paseo-por-el-acantilado-de-pourville.jpg",
+        img: "movements/paseo-por-el-acantilado-de-pourville.jpg",
         title: "Impresionismo",
         date: "1872–1882",
     },
@@ -105,10 +101,10 @@ const movements = [
                     <div
                         class="grid justify-center gap-5 px-5 sm:flex md:px-10"
                     >
-                        <ArtPieceItemHolder
+                        <ItemCardHolder
                             v-for="(artPiece, index) in artPieces"
                             :key="index"
-                            :artPiece="artPiece"
+                            :item="artPiece"
                         />
                     </div>
                 </section>
@@ -125,10 +121,10 @@ const movements = [
                     <div
                         class="grid justify-center gap-5 px-5 sm:flex md:px-10"
                     >
-                        <ArtistItemHolder
+                        <ItemCardHolder
                             v-for="(artist, index) in artists"
                             :key="index"
-                            :artist="artist"
+                            :item="artist"
                         />
                     </div>
                 </section>
@@ -145,10 +141,10 @@ const movements = [
                     <div
                         class="grid justify-center gap-5 px-5 sm:flex md:px-10"
                     >
-                        <MovementItemHolder
+                        <ItemCardHolder
                             v-for="(movement, index) in movements"
                             :key="index"
-                            :movement="movement"
+                            :item="movement"
                         />
                     </div>
                 </section>
@@ -166,10 +162,10 @@ const movements = [
                     </h3>
 
                     <div class="grid gap-5 px-5 sm:grid-cols-2 md:px-10">
-                        <ArticleItemHolder
+                        <ItemCardHolder
                             v-for="(article, index) in articles"
                             :key="index"
-                            :article="article"
+                            :item="article"
                         />
                     </div>
                 </section>

@@ -73,6 +73,39 @@ const menuMovements = [
     "Land Art",
     "Arte Povera",
 ];
+
+const items = [
+    {
+        img: "article/weyant-festejada.jpg",
+        title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
+        date: "14/07/2025",
+    },
+    {
+        img: "artist/francisco-de-goya.jpg",
+        title: "Francisco de Goya",
+        date: "22/07/2025",
+    },
+    {
+        img: "artist/diego-velazquez.jpg",
+        title: "Diego Velázquez",
+        date: "22/07/2025",
+    },
+    {
+        img: "pieces/impresion-sol-naciente.jpg",
+        title: "Impresión, sol naciente",
+        date: "22/07/2025",
+    },
+    {
+        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
+        title: "La Ejecución de Lady Jane Grey",
+        date: "22/07/2025",
+    },
+    {
+        img: "movements/san-jeronimo-escribiendo.jpg",
+        title: "Barroco",
+        date: "1600–1750",
+    },
+];
 </script>
 
 <template>
@@ -183,12 +216,11 @@ const menuMovements = [
                 <div
                     class="xlpx-16 grid gap-5 px-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-10"
                 >
-                    <ItemCardHolder />
-                    <ItemCardHolder />
-                    <ItemCardHolder />
-                    <ItemCardHolder />
-                    <ItemCardHolder />
-                    <ItemCardHolder />
+                    <ItemCardHolder
+                        v-for="(item, index) in items"
+                        :key="index"
+                        :item="item"
+                    />
                 </div>
                 <!-- flechas de paginación -->
                 <div class="mt-10 flex justify-between px-16">

@@ -1,15 +1,25 @@
+<script setup>
+const props = defineProps({
+    item: Object,
+});
+</script>
+
 <template>
     <div
-        class="cursor-pointer bg-violet-200 shadow-lg transition-all delay-50 hover:scale-110"
+        class="w-full cursor-pointer bg-violet-200 shadow-lg transition-all delay-50 hover:scale-110"
     >
-        <slot name="item-image"></slot>
+        <img
+            :src="`/images/${item.img}`"
+            alt="art-piece-image"
+            class="h-56 w-full rounded-t-xl"
+        />
 
         <div class="w-full">
             <h4 class="mb-1 line-clamp-2 px-5 pt-1 text-lg">
-                <slot name="item-title"></slot>
+                {{ item.title }}
             </h4>
             <p class="px-5 pt-1 text-base">
-                <slot name="item-date"></slot>
+                {{ item.date }}
             </p>
         </div>
     </div>
