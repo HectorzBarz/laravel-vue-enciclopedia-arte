@@ -11,24 +11,28 @@ const articles = [
         img: "article/weyant-festejada.jpg",
         title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
         date: "14/07/2025",
+        type: "Artistas",
     },
     {
         id: 2,
         img: "article/tesoro-de-dahomey.jpg",
         title: "El retorno del tesoro de Dahomey: justicia histórica en Benín",
         date: "16/05/2025",
+        type: "Obras",
     },
     {
         id: 3,
         img: "article/jardin-de-las-delicias.jpg",
         title: "El secreto del cuadro más mirado del Prado: “El jardín de las delicias”",
         date: "16/04/2025",
+        type: "Obras",
     },
     {
         id: 4,
         img: "article/ides-kihlen.jpg",
         title: "Ides Kihlen cumple 108 años: la pintora más longeva del arte argentino",
         date: "10/07/2025",
+        type: "Artistas",
     },
 ];
 
@@ -37,19 +41,19 @@ const artists = [
         id: 1,
         img: "artist/francisco-de-goya.jpg",
         title: "Francisco de Goya",
-        date: "22/07/2025",
+        date: "1746–1828",
     },
     {
         id: 2,
         img: "artist/diego-velazquez.jpg",
         title: "Diego Velázquez",
-        date: "22/07/2025",
+        date: "1599–1660",
     },
     {
         id: 3,
         img: "artist/el-greco.jpg",
         title: "El Greco",
-        date: "22/07/2025",
+        date: "1541–1614",
     },
 ];
 
@@ -104,7 +108,7 @@ const movements = [
     <main>
         <!-- contenedor de todas las secciones del main -->
         <div
-            class="my-5 flex flex-col rounded-2xl bg-violet-100 md:mx-12 lg:mx-14 xl:mx-24 xl:flex-row xl:items-center 2xl:mx-12"
+            class="my-5 flex flex-col rounded-2xl bg-violet-100 md:mx-12 lg:mx-14 xl:mx-0 xl:flex-row xl:items-center 2xl:mx-12"
         >
             <!-- contenedor de las secciones "Obras", "Artistas" y "Artículos Recientes"-->
             <div class="w-full">
@@ -115,13 +119,13 @@ const movements = [
                     </h3>
 
                     <div
-                        class="grid justify-center gap-10 px-5 sm:flex md:px-10"
+                        class="grid justify-around gap-10 px-5 sm:flex md:px-10 lg:grid-cols-3"
                     >
                         <ItemCardHolder
                             v-for="piece in pieces"
                             :key="piece.id"
                             :item="piece"
-                            :route="/art-piece/"
+                            route="/art-piece/"
                         >
                         </ItemCardHolder>
                     </div>
@@ -137,13 +141,13 @@ const movements = [
                     </h3>
 
                     <div
-                        class="grid justify-center gap-10 px-5 sm:flex md:px-10"
+                        class="grid justify-around gap-10 px-5 sm:flex md:px-10 lg:grid-cols-3"
                     >
                         <ItemCardHolder
                             v-for="artist in artists"
                             :key="artist.id"
                             :item="artist"
-                            :route="/artists/"
+                            route="/artists/"
                         />
                     </div>
                 </section>
@@ -158,13 +162,13 @@ const movements = [
                     </h3>
 
                     <div
-                        class="grid justify-center gap-10 px-5 sm:flex md:px-10"
+                        class="grid justify-around gap-10 px-5 sm:flex md:px-10 lg:grid-cols-3"
                     >
                         <ItemCardHolder
-                            v-for="movement in movements"
-                            :key="movement.id"
+                            v-for="(movement, index) in movements"
+                            :key="index"
                             :item="movement"
-                            :route="/movements/"
+                            route="/movements/"
                         />
                     </div>
                 </section>
@@ -181,12 +185,14 @@ const movements = [
                         Artículos recientes
                     </h3>
 
-                    <div class="grid gap-10 px-5 sm:grid-cols-2 md:px-10">
+                    <div
+                        class="grid justify-around gap-10 px-20 py-2 sm:grid-cols-2 md:px-10 lg:px-24 xl:px-16 xl:py-0"
+                    >
                         <ItemCardHolder
-                            v-for="article in articles"
-                            :key="article.id"
+                            v-for="(article, index) in articles"
+                            :key="index"
                             :item="article"
-                            :route="/articles/"
+                            route="/articles/"
                         />
                     </div>
                 </section>

@@ -20,9 +20,14 @@ const props = defineProps({
                 <h4 class="mb-1 line-clamp-2 px-5 pt-1 text-lg">
                     {{ item.title }}
                 </h4>
-                <p class="px-5 pt-1 text-base">
-                    {{ item.date }}
-                </p>
+                <div class="flex justify-between">
+                    <p class="px-5 pt-1 text-base">
+                        {{ item.date }}
+                    </p>
+                    <p class="px-5 pt-1 text-base" v-if="item.type">
+                        {{ item.type }}
+                    </p>
+                </div>
             </div>
         </div>
     </RouterLink>
