@@ -30,45 +30,50 @@ const pieces = [
 
 <template>
     <div
-        class="my-10 flex h-full flex-col rounded-2xl bg-violet-100 p-5 sm:mx-10 lg:mx-20 xl:mx-16 xl:flex-row"
+        class="my-10 flex h-full flex-col rounded-2xl bg-violet-100 sm:p-5 lg:mx-20 xl:mx-16 xl:flex-row"
     >
-        <section>
+        <section class="border-b-2 border-violet-200 xl:border-0">
             <div
-                class="h-full w-full border-b-2 border-violet-200 px-5 py-5 lg:min-w-96 lg:border-b-0 xl:border-r-2"
+                class="flex h-full w-full flex-col items-center border-violet-200 px-5 py-5 lg:min-w-96 lg:flex-row lg:items-start lg:justify-start lg:border-b-0 xl:flex-col xl:border-r-2"
             >
-                <div class="">
-                    <img
-                        src="/public/images/artist/francisco-de-goya.jpg"
+                <div>
+                    <Image
+                        src="/images/artist/francisco-de-goya.jpg"
                         alt="artist-image"
+                        preview
                     />
                 </div>
-                <div class="">
+                <div class="px-5 py-5">
                     <p class="mb-1 text-4xl">Francisco de Goya</p>
                     <p class="mb-2 text-2xl">España, 1746 - 1828</p>
-                </div>
-                <div class="flex gap-5">
-                    <p
-                        class="cursor-pointer rounded-sm border bg-violet-200 px-2.5 py-1 text-xl transition-colors delay-100 hover:bg-violet-300"
+                    <div
+                        class="flex flex-col gap-5 text-center sm:flex-row sm:text-start"
                     >
-                        Rococó
-                    </p>
-                    <p
-                        class="cursor-pointer rounded-sm border bg-violet-200 px-2.5 py-1 text-xl transition-colors delay-100 hover:bg-violet-300"
-                    >
-                        Neoclasicismo
-                    </p>
-                    <p
-                        class="cursor-pointer rounded-sm border bg-violet-200 px-2.5 py-1 text-xl transition-colors delay-100 hover:bg-violet-300"
-                    >
-                        Romanticismo
-                    </p>
+                        <p
+                            class="cursor-pointer rounded-sm border bg-violet-200 px-2.5 py-1 text-xl transition-colors delay-100 hover:bg-violet-300"
+                        >
+                            Rococó
+                        </p>
+                        <p
+                            class="cursor-pointer rounded-sm border bg-violet-200 px-2.5 py-1 text-xl transition-colors delay-100 hover:bg-violet-300"
+                        >
+                            Neoclasicismo
+                        </p>
+                        <p
+                            class="cursor-pointer rounded-sm border bg-violet-200 px-2.5 py-1 text-xl transition-colors delay-100 hover:bg-violet-300"
+                        >
+                            Romanticismo
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section>
             <div class="h-full w-full">
-                <p class="m-5 columns-2 bg-violet-200 p-5 text-justify text-xl">
+                <p
+                    class="mx-1 my-5 rounded-md bg-violet-200 p-5 text-justify text-xl sm:m-5 sm:mx-10 md:columns-2"
+                >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Nulla nibh urna, pellentesque ac est vel, mollis convallis
                     urna. Suspendisse quis vestibulum nulla. Suspendisse
@@ -98,7 +103,9 @@ const pieces = [
                     Curabitur pellentesque, est at maximus fermentum, felis
                     justo finibus nulla, at consectetur libero ligula a dui.
                 </p>
-                <div class="flex justify-between p-10">
+                <div
+                    class="flex flex-col justify-between gap-10 p-10 sm:p-26 md:flex-row md:justify-around md:px-10 md:py-5"
+                >
                     <ItemCardHolder
                         v-for="item in pieces"
                         :key="item.id"
