@@ -88,7 +88,7 @@ const movements = [
     <main>
         <!-- contenedor de todas las secciones del main -->
         <div
-            class="mx-12 my-5 flex flex-col rounded-2xl bg-violet-100 lg:mx-14 xl:mx-24 xl:flex-row xl:items-center 2xl:mx-28"
+            class="my-5 flex flex-col rounded-2xl bg-violet-100 md:mx-12 lg:mx-14 xl:mx-24 xl:flex-row xl:items-center 2xl:mx-12"
         >
             <!-- contenedor de las secciones "Obras", "Artistas" y "Artículos Recientes"-->
             <div class="w-full">
@@ -99,7 +99,7 @@ const movements = [
                     </h3>
 
                     <div
-                        class="grid justify-center gap-5 px-5 sm:flex md:px-10"
+                        class="grid justify-center gap-10 px-5 sm:flex md:px-10"
                     >
                         <ItemCardHolder
                             v-for="(artPiece, index) in pieces"
@@ -119,7 +119,7 @@ const movements = [
                     </h3>
 
                     <div
-                        class="grid justify-center gap-5 px-5 sm:flex md:px-10"
+                        class="grid justify-center gap-10 px-5 sm:flex md:px-10"
                     >
                         <ItemCardHolder
                             v-for="(artist, index) in artists"
@@ -139,7 +139,7 @@ const movements = [
                     </h3>
 
                     <div
-                        class="grid justify-center gap-5 px-5 sm:flex md:px-10"
+                        class="grid justify-center gap-10 px-5 sm:flex md:px-10"
                     >
                         <ItemCardHolder
                             v-for="(movement, index) in movements"
@@ -161,7 +161,7 @@ const movements = [
                         Artículos recientes
                     </h3>
 
-                    <div class="grid gap-5 px-5 sm:grid-cols-2 md:px-10">
+                    <div class="grid gap-10 px-5 sm:grid-cols-2 md:px-10">
                         <ItemCardHolder
                             v-for="(article, index) in articles"
                             :key="index"
