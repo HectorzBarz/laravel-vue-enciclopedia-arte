@@ -71,7 +71,7 @@ function handleClick(item) {
             <RouterLink to="/login">
                 <div class="flex">
                     <button
-                        class="hidden px-2.5 py-1 text-xl transition-colors delay-100 sm:flex sm:cursor-pointer sm:rounded-sm sm:border sm:bg-violet-200 sm:hover:bg-purple-300"
+                        class="hidden px-2.5 py-1 text-xl transition-colors delay-100 sm:flex sm:cursor-pointer sm:rounded-sm sm:border sm:bg-violet-200 sm:hover:bg-violet-400"
                     >
                         Ingresar
                     </button>
