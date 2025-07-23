@@ -1,24 +1,31 @@
 <script setup>
 import ItemCardHolder from "./layouts/ItemCardHolder.vue";
 import Quoue from "./home/Quoue.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const articles = [
     {
+        id: 1,
         img: "article/weyant-festejada.jpg",
         title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
         date: "14/07/2025",
     },
     {
+        id: 2,
         img: "article/tesoro-de-dahomey.jpg",
         title: "El retorno del tesoro de Dahomey: justicia histórica en Benín",
         date: "16/05/2025",
     },
     {
+        id: 3,
         img: "article/jardin-de-las-delicias.jpg",
         title: "El secreto del cuadro más mirado del Prado: “El jardín de las delicias”",
         date: "16/04/2025",
     },
     {
+        id: 4,
         img: "article/ides-kihlen.jpg",
         title: "Ides Kihlen cumple 108 años: la pintora más longeva del arte argentino",
         date: "10/07/2025",
@@ -27,16 +34,19 @@ const articles = [
 
 const artists = [
     {
+        id: 1,
         img: "artist/francisco-de-goya.jpg",
         title: "Francisco de Goya",
         date: "22/07/2025",
     },
     {
+        id: 2,
         img: "artist/diego-velazquez.jpg",
         title: "Diego Velázquez",
         date: "22/07/2025",
     },
     {
+        id: 3,
         img: "artist/el-greco.jpg",
         title: "El Greco",
         date: "22/07/2025",
@@ -45,16 +55,19 @@ const artists = [
 
 const pieces = [
     {
+        id: 1,
         img: "pieces/impresion-sol-naciente.jpg",
         title: "Impresión, sol naciente",
         date: "22/07/2025",
     },
     {
+        id: 2,
         img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
         title: "La Ejecución de Lady Jane Grey",
         date: "22/07/2025",
     },
     {
+        id: 3,
         img: "pieces/ecce-hommo.jpg",
         title: "Ecce Homo",
         date: "22/07/2025",
@@ -63,16 +76,19 @@ const pieces = [
 
 const movements = [
     {
+        id: 1,
         img: "movements/san-jeronimo-escribiendo.jpg",
         title: "Barroco",
         date: "1600–1750",
     },
     {
+        id: 2,
         img: "movements/la-muerte-de-viriato.jpg",
         title: "Neoclasicismo",
         date: "1750–1820",
     },
     {
+        id: 3,
         img: "movements/paseo-por-el-acantilado-de-pourville.jpg",
         title: "Impresionismo",
         date: "1872–1882",
@@ -102,10 +118,12 @@ const movements = [
                         class="grid justify-center gap-10 px-5 sm:flex md:px-10"
                     >
                         <ItemCardHolder
-                            v-for="(artPiece, index) in pieces"
-                            :key="index"
-                            :item="artPiece"
-                        />
+                            v-for="piece in pieces"
+                            :key="piece.id"
+                            :item="piece"
+                            :route="/art-piece/"
+                        >
+                        </ItemCardHolder>
                     </div>
                 </section>
 
@@ -122,9 +140,10 @@ const movements = [
                         class="grid justify-center gap-10 px-5 sm:flex md:px-10"
                     >
                         <ItemCardHolder
-                            v-for="(artist, index) in artists"
-                            :key="index"
+                            v-for="artist in artists"
+                            :key="artist.id"
                             :item="artist"
+                            :route="/artists/"
                         />
                     </div>
                 </section>
@@ -142,9 +161,10 @@ const movements = [
                         class="grid justify-center gap-10 px-5 sm:flex md:px-10"
                     >
                         <ItemCardHolder
-                            v-for="(movement, index) in movements"
-                            :key="index"
+                            v-for="movement in movements"
+                            :key="movement.id"
                             :item="movement"
+                            :route="/movements/"
                         />
                     </div>
                 </section>
@@ -163,9 +183,10 @@ const movements = [
 
                     <div class="grid gap-10 px-5 sm:grid-cols-2 md:px-10">
                         <ItemCardHolder
-                            v-for="(article, index) in articles"
-                            :key="index"
+                            v-for="article in articles"
+                            :key="article.id"
                             :item="article"
+                            :route="/articles/"
                         />
                     </div>
                 </section>
