@@ -35,6 +35,32 @@ const router = createRouter({
             component: () => import("@/src/components/auth/RegisterView.vue"),
             meta: { title: "Register" },
         },
+        {
+            path: "/art-piece/:id",
+            name: "art-piece",
+            component: () => import("@/src/components/pieces/ArtPieceView.vue"),
+            meta: { title: "Piece" },
+        },
+        {
+            path: "/artists/:id",
+            name: "artist",
+            component: () => import("@/src/components/artists/ArtistView.vue"),
+            meta: { title: "Artist" },
+        },
+        {
+            path: "/movements/:id",
+            name: "movement",
+            component: () =>
+                import("@/src/components/movements/MovementView.vue"),
+            meta: { title: "Movement" },
+        },
+        {
+            path: "/articles/:id",
+            name: "article",
+            component: () =>
+                import("@/src/components/articles/ArticleView.vue"),
+            meta: { title: "Article" },
+        },
     ],
 });
 

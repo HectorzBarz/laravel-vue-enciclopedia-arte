@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from "vue";
 import ItemCardHolder from "./ItemCardHolder.vue";
 import { useSearchStore } from "../../stores/SearchStore";
 
@@ -202,7 +201,7 @@ const items = [
                 </h3>
                 <!-- bloque donde se mostrarán los resultados: -->
                 <div
-                    class="grid gap-10 px-20 sm:grid-cols-2 sm:px-8 lg:px-16 xl:grid-cols-3 xl:gap-10 xl:px-16 2xl:grid-cols-4"
+                    class="grid gap-5 px-20 sm:grid-cols-2 sm:px-8 lg:px-16 xl:grid-cols-3 xl:gap-10 xl:px-16 2xl:grid-cols-4"
                 >
                     <ItemCardHolder
                         v-for="(item, index) in items"
