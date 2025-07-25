@@ -89,7 +89,7 @@ function handleClick(item) {
     >
         <div v-if="menuVisible" class="absolute z-50 w-full sm:hidden">
             <ul
-                class="rounded-b-md bg-violet-300 px-2 text-xl shadow-lg shadow-gray-600"
+                class="rounded-b-md bg-violet-300 px-2 text-xl shadow-lg shadow-violet-950"
             >
                 <li
                     class="cursor-pointer py-1 hover:text-violet-400 hover:underline"
