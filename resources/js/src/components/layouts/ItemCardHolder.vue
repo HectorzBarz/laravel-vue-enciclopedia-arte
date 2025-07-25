@@ -1,18 +1,37 @@
+<script setup>
+const props = defineProps({
+    item: Object,
+    route: String,
+});
+</script>
+
 <template>
-    <div
-        class="cursor-pointer shadow-lg transition-all delay-50 hover:scale-110"
-    >
-        <img
-            src="/public/images/article/Impresionismo_ejemplo.jpg"
-            alt="article-image"
-            class="rounded-t-xl"
-        />
-        <div class="w-full bg-violet-200">
-            <h4 class="mb-1 line-clamp-2 px-5 pt-1 text-lg">
-                El Impresionismo es un movimiento artístico que empezó en el
-                1872 y acabó en el 1882
-            </h4>
-            <p class="px-5 pt-1 text-base">16/07/2025</p>
+    <RouterLink :to="`${route}${item.id}`">
+        <div
+            class="w-full cursor-pointer bg-violet-200 shadow-lg transition-all delay-50 hover:scale-110"
+        >
+            <img
+                :src="`/images/${item.img}`"
+                alt="art-piece-image"
+                class="h-56 w-full 2xl:h-60"
+            />
+
+            <div class="w-full">
+                <h4 class="mb-1 line-clamp-2 px-5 pt-1 text-lg">
+                    {{ item.title }}
+                </h4>
+                <div class="flex justify-between">
+                    <p class="px-5 pt-1 text-base" v-if="item.start">
+                        {{ item.start }} - {{ item.end }}
+                    </p>
+                    <p class="px-5 pt-1 text-base" v-else>
+                        {{ item.date }}
+                    </p>
+                    <p class="px-5 pt-1 text-base" v-if="item.type">
+                        {{ item.type }}
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
+    </RouterLink>
 </template>

@@ -1,26 +1,9 @@
 <script setup>
-import { ref } from "vue";
 import ItemCardHolder from "./ItemCardHolder.vue";
+import { useSearchStore } from "../../stores/SearchStore";
 
-// checkbox options en la zona de búsqueda
-const checked = ref([
-    {
-        name: "Artistas",
-        checked: false,
-    },
-    {
-        name: "Obras",
-        checked: false,
-    },
-    {
-        name: "Movimientos Artísticos",
-        checked: false,
-    },
-    {
-        name: "Artículos",
-        checked: false,
-    },
-]);
+// store de las checkboxes
+const store = useSearchStore();
 
 const menuMovements = [
     "Proto-Renacimiento",
@@ -73,16 +56,55 @@ const menuMovements = [
     "Land Art",
     "Arte Povera",
 ];
+
+const items = [
+    {
+        img: "article/drives-me-crazy.jpg",
+        title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
+        date: "14/07/2025",
+        route: "/articles/",
+    },
+    {
+        img: "artist/francisco-de-goya.jpg",
+        title: "Francisco de Goya",
+        date: "22/07/2025",
+        route: "/artists/",
+    },
+    {
+        img: "artist/diego-velazquez.jpg",
+        title: "Diego Velázquez",
+        date: "22/07/2025",
+        route: "/artists/",
+    },
+    {
+        img: "pieces/impresion-sol-naciente.jpg",
+        title: "Impresión, sol naciente",
+        date: "22/07/2025",
+        route: "/art-piece/",
+    },
+    {
+        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
+        title: "La Ejecución de Lady Jane Grey",
+        date: "22/07/2025",
+        route: "/art-piece/",
+    },
+    {
+        img: "movements/san-jeronimo-escribiendo.jpg",
+        title: "Barroco",
+        date: "1600–1750",
+        route: "/movements/",
+    },
+];
 </script>
 
 <template>
     <div
-        class="my-10 flex h-full flex-col rounded-2xl bg-violet-100 p-5 sm:mx-10 lg:mx-16 lg:flex-row xl:mx-36"
+        class="my-10 flex h-full flex-col rounded-2xl bg-violet-100 p-5 sm:mx-10 lg:mx-20 xl:mx-16 xl:flex-row"
     >
         <!-- seccion del buscador -->
         <section>
             <div
-                class="h-full w-full border-b-2 border-violet-200 px-5 py-5 lg:min-w-96 lg:border-r-2 lg:border-b-0"
+                class="h-full w-full border-b-2 border-violet-200 px-5 py-5 lg:min-w-96 lg:border-b-0 xl:border-r-2"
             >
                 <!-- barra de búsqueda -->
                 <input
@@ -95,7 +117,11 @@ const menuMovements = [
                 <!-- FIN barra de búsqueda -->
 
                 <!-- bloque de checkboxes para opciones de filtrado -->
-                <div v-for="(item, index) of checked" :key="index" class="pr-2">
+                <div
+                    v-for="(item, index) of store.checked"
+                    :key="index"
+                    class="pr-2"
+                >
                     <input
                         class="size-5"
                         type="checkbox"
@@ -110,14 +136,14 @@ const menuMovements = [
                 <!-- FIN bloque de checkboxes para opciones de filtrado -->
 
                 <!-- opciones de obras -->
-                <div v-if="checked[1].checked" class="py-5">
+                <div v-if="store.checked[2].checked" class="py-5">
                     <h3
                         class="border-t-2 border-violet-200 py-2 text-center text-2xl"
                     >
                         Opciones de Obras
                     </h3>
                     <div
-                        class="flex flex-col items-center justify-center gap-5 md:flex-row"
+                        class="flex flex-col items-center justify-center gap-1 lg:flex-row lg:gap-5 xl:flex-col xl:gap-1"
                     >
                         <input
                             type="number"
@@ -139,7 +165,7 @@ const menuMovements = [
                 <!-- FIN opciones de obras -->
 
                 <!-- opciones moviminetos artisticos -->
-                <div v-if="checked[2].checked" class="flex flex-col py-5">
+                <div v-if="store.checked[3].checked" class="flex flex-col py-5">
                     <label
                         for="movement-select"
                         class="border-t-2 border-violet-200 py-2 text-center text-2xl"
@@ -181,14 +207,14 @@ const menuMovements = [
                 </h3>
                 <!-- bloque donde se mostrarán los resultados: -->
                 <div
-                    class="xlpx-16 grid gap-5 px-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-10"
+                    class="grid gap-5 px-20 sm:grid-cols-2 sm:px-8 lg:px-16 xl:grid-cols-3 xl:gap-10 xl:px-16 2xl:grid-cols-4"
                 >
-                    <ItemCardHolder />
-                    <ItemCardHolder />
-                    <ItemCardHolder />
-                    <ItemCardHolder />
-                    <ItemCardHolder />
-                    <ItemCardHolder />
+                    <ItemCardHolder
+                        v-for="(item, index) in items"
+                        :key="index"
+                        :item="item"
+                        :route="item.route"
+                    />
                 </div>
                 <!-- flechas de paginación -->
                 <div class="mt-10 flex justify-between px-16">

@@ -1,6 +1,11 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
+import { useSearchStore } from "../../stores/SearchStore";
+import { useRouter } from "vue-router";
+
+const store = useSearchStore();
+const router = useRouter();
 
 const menuVisible = ref(false);
 
@@ -16,13 +21,23 @@ const menu = [
 function toggleMenu() {
     menuVisible.value = !menuVisible.value;
 }
+
+function handleClick(item) {
+    // Reinicia todos los checkboxes
+    store.checked.forEach((opt) => {
+        opt.checked = opt.name === item.name;
+    });
+
+    // Redirige a la ruta correspondiente
+    router.push(item.route);
+}
 </script>
 
 <template>
     <!-- navbar -->
     <nav>
         <div
-            class="relative flex h-24 max-h-24 items-center justify-between bg-violet-300 p-5 shadow-lg shadow-gray-300"
+            class="flex h-24 max-h-24 items-center justify-between bg-violet-300 p-5 shadow-lg shadow-gray-300"
         >
             <div class="flex items-center">
                 <!-- burger menu icon en caso de que el ancho baje -->
@@ -45,18 +60,11 @@ function toggleMenu() {
                 <!-- titulo de la pagina -->
                 <h1 class="mx-5 text-xl sm:text-2xl">Enciclopedia de arte</h1>
             </div>
-            <!-- <div class="hidden items-center gap-5 text-xl lg:flex">
-                <h1 class="">Barra de búsqueda</h1>
-                <img
-                    src="/public/images/navbar/magnifying-glass.png"
-                    alt="search-icon"
-                    class="h-7 w-7"
-                />
-            </div> -->
+
             <RouterLink to="/login">
                 <div class="flex">
                     <button
-                        class="hidden px-2.5 py-1 text-xl transition-colors delay-100 sm:flex sm:cursor-pointer sm:rounded-sm sm:border sm:bg-violet-200 sm:hover:bg-purple-300"
+                        class="hidden px-2.5 py-1 text-xl transition-colors delay-100 sm:flex sm:cursor-pointer sm:rounded-sm sm:border sm:bg-violet-200 sm:hover:bg-violet-400"
                     >
                         Ingresar
                     </button>
@@ -79,17 +87,16 @@ function toggleMenu() {
         leave-from-class="opacity-100 translate-y-0"
         leave-to-class="opacity-0 -translate-y-2"
     >
-        <div v-if="menuVisible" class="absolute w-full sm:hidden">
+        <div v-if="menuVisible" class="absolute z-50 w-full sm:hidden">
             <ul
                 class="rounded-b-md bg-violet-300 px-2 text-xl shadow-lg shadow-gray-600"
             >
                 <li
-                    class="py-1 hover:text-violet-400 hover:underline"
+                    class="cursor-pointer py-1 hover:text-violet-400 hover:underline"
                     v-for="item of menu"
+                    @click="handleClick(item)"
                 >
-                    <RouterLink :to="item.route">
-                        {{ item.name }}
-                    </RouterLink>
+                    {{ item.name }}
                 </li>
             </ul>
         </div>
@@ -103,8 +110,9 @@ function toggleMenu() {
         <div v-for="item of menu" class="flex">
             <button
                 class="cursor-pointer gap-1 px-2.5 py-2 text-xl transition-colors delay-100 hover:text-violet-500 hover:underline"
+                @click="handleClick(item)"
             >
-                <RouterLink :to="item.route">{{ item.name }}</RouterLink>
+                {{ item.name }}
             </button>
         </div>
     </section>

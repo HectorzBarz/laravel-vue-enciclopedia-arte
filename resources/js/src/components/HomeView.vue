@@ -1,6 +1,112 @@
 <script setup>
 import ItemCardHolder from "./layouts/ItemCardHolder.vue";
 import Quoue from "./home/Quoue.vue";
+
+const articles = [
+    {
+        id: 1,
+        img: "article/drives-me-crazy.jpg",
+        title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
+        date: "14/07/2025",
+        type: "Artistas",
+    },
+    {
+        id: 2,
+        img: "article/tesoro-de-dahomey.jpg",
+        title: "El retorno del tesoro de Dahomey: justicia histórica en Benín",
+        date: "16/05/2025",
+        type: "Obras",
+    },
+    {
+        id: 3,
+        img: "article/jardin-de-las-delicias.jpg",
+        title: "El secreto del cuadro más mirado del Prado: “El jardín de las delicias”",
+        date: "16/04/2025",
+        type: "Obras",
+    },
+    {
+        id: 4,
+        img: "article/ides-kihlen.jpg",
+        title: "Ides Kihlen cumple 108 años: la pintora más longeva del arte argentino",
+        date: "10/07/2025",
+        type: "Artistas",
+    },
+];
+
+const artists = [
+    {
+        id: 1,
+        img: "artist/francisco-de-goya.jpg",
+        title: "Francisco de Goya",
+        start: 1746,
+        end: 1828,
+    },
+    {
+        id: 2,
+        img: "artist/diego-velazquez.jpg",
+        title: "Diego Velázquez",
+        start: 1599,
+        end: 1660,
+    },
+    {
+        id: 3,
+        img: "artist/el-greco.jpg",
+        title: "El Greco",
+        start: 1541,
+        end: 1614,
+    },
+];
+
+const pieces = [
+    {
+        id: 1,
+        img: "pieces/impresion-sol-naciente.jpg",
+        title: "Impresión, sol naciente",
+        date: "1872",
+        description: "",
+        tags: [""],
+    },
+    {
+        id: 2,
+        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
+        title: "La Ejecución de Lady Jane Grey",
+        date: "1833",
+        description: "",
+        tags: [""],
+    },
+    {
+        id: 3,
+        img: "pieces/ecce-hommo.jpg",
+        title: "Ecce Homo",
+        date: "1871",
+        description: "",
+        tags: [""],
+    },
+];
+
+const movements = [
+    {
+        id: 1,
+        img: "movements/san-jeronimo-escribiendo.jpg",
+        title: "Barroco",
+        start: 1600,
+        end: 1750,
+    },
+    {
+        id: 2,
+        img: "movements/la-muerte-de-viriato.jpg",
+        title: "Neoclasicismo",
+        start: 1750,
+        end: 1820,
+    },
+    {
+        id: 3,
+        img: "movements/paseo-por-el-acantilado-de-pourville.jpg",
+        title: "Impresionismo",
+        start: 1872,
+        end: 1882,
+    },
+];
 </script>
 
 <template>
@@ -11,7 +117,7 @@ import Quoue from "./home/Quoue.vue";
     <main>
         <!-- contenedor de todas las secciones del main -->
         <div
-            class="mx-12 my-5 flex flex-col rounded-2xl bg-violet-100 lg:mx-14 xl:mx-24 xl:flex-row xl:items-center 2xl:mx-32"
+            class="my-5 flex flex-col rounded-2xl bg-violet-100 md:mx-12 lg:mx-14 xl:mx-0 xl:flex-row xl:items-center 2xl:mx-12"
         >
             <!-- contenedor de las secciones "Obras", "Artistas" y "Artículos Recientes"-->
             <div class="w-full">
@@ -22,11 +128,15 @@ import Quoue from "./home/Quoue.vue";
                     </h3>
 
                     <div
-                        class="grid justify-center gap-5 px-5 sm:flex md:px-10"
+                        class="grid justify-around gap-10 px-5 sm:flex md:px-10 lg:grid-cols-3"
                     >
-                        <ItemCardHolder />
-                        <ItemCardHolder />
-                        <ItemCardHolder />
+                        <ItemCardHolder
+                            v-for="piece in pieces"
+                            :key="piece.id"
+                            :item="piece"
+                            route="/art-piece/"
+                        >
+                        </ItemCardHolder>
                     </div>
                 </section>
 
@@ -40,11 +150,14 @@ import Quoue from "./home/Quoue.vue";
                     </h3>
 
                     <div
-                        class="grid justify-center gap-5 px-5 sm:flex md:px-10"
+                        class="grid justify-around gap-10 px-5 sm:flex md:px-10 lg:grid-cols-3"
                     >
-                        <ItemCardHolder />
-                        <ItemCardHolder />
-                        <ItemCardHolder />
+                        <ItemCardHolder
+                            v-for="artist in artists"
+                            :key="artist.id"
+                            :item="artist"
+                            route="/artists/"
+                        />
                     </div>
                 </section>
 
@@ -58,11 +171,14 @@ import Quoue from "./home/Quoue.vue";
                     </h3>
 
                     <div
-                        class="grid justify-center gap-5 px-5 sm:flex md:px-10"
+                        class="grid justify-around gap-10 px-5 sm:flex md:px-10 lg:grid-cols-3"
                     >
-                        <ItemCardHolder />
-                        <ItemCardHolder />
-                        <ItemCardHolder />
+                        <ItemCardHolder
+                            v-for="(movement, index) in movements"
+                            :key="index"
+                            :item="movement"
+                            route="/movements/"
+                        />
                     </div>
                 </section>
             </div>
@@ -78,11 +194,15 @@ import Quoue from "./home/Quoue.vue";
                         Artículos recientes
                     </h3>
 
-                    <div class="grid gap-5 px-5 sm:grid-cols-2 md:px-10">
-                        <ItemCardHolder />
-                        <ItemCardHolder />
-                        <ItemCardHolder />
-                        <ItemCardHolder />
+                    <div
+                        class="grid justify-around gap-10 px-20 py-2 sm:grid-cols-2 md:px-10 lg:px-24 xl:px-16 xl:py-0"
+                    >
+                        <ItemCardHolder
+                            v-for="(article, index) in articles"
+                            :key="index"
+                            :item="article"
+                            route="/articles/"
+                        />
                     </div>
                 </section>
             </div>
