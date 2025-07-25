@@ -59,34 +59,40 @@ const menuMovements = [
 
 const items = [
     {
-        img: "article/weyant-festejada.jpg",
+        img: "article/drives-me-crazy.jpg",
         title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
         date: "14/07/2025",
+        route: "/articles/",
     },
     {
         img: "artist/francisco-de-goya.jpg",
         title: "Francisco de Goya",
         date: "22/07/2025",
+        route: "/artists/",
     },
     {
         img: "artist/diego-velazquez.jpg",
         title: "Diego Velázquez",
         date: "22/07/2025",
+        route: "/artists/",
     },
     {
         img: "pieces/impresion-sol-naciente.jpg",
         title: "Impresión, sol naciente",
         date: "22/07/2025",
+        route: "/art-piece/",
     },
     {
         img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
         title: "La Ejecución de Lady Jane Grey",
         date: "22/07/2025",
+        route: "/art-piece/",
     },
     {
         img: "movements/san-jeronimo-escribiendo.jpg",
         title: "Barroco",
         date: "1600–1750",
+        route: "/movements/",
     },
 ];
 </script>
@@ -207,6 +213,7 @@ const items = [
                         v-for="(item, index) in items"
                         :key="index"
                         :item="item"
+                        :route="item.route"
                     />
                 </div>
                 <!-- flechas de paginación -->

@@ -21,7 +21,10 @@ const props = defineProps({
                     {{ item.title }}
                 </h4>
                 <div class="flex justify-between">
-                    <p class="px-5 pt-1 text-base">
+                    <p class="px-5 pt-1 text-base" v-if="item.start">
+                        {{ item.start }} - {{ item.end }}
+                    </p>
+                    <p class="px-5 pt-1 text-base" v-else>
                         {{ item.date }}
                     </p>
                     <p class="px-5 pt-1 text-base" v-if="item.type">
