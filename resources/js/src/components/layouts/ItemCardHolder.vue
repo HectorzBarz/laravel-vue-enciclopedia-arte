@@ -8,12 +8,12 @@ const props = defineProps({
 <template>
     <RouterLink :to="`${route}${item.id}`">
         <div
-            class="w-full cursor-pointer rounded-t-xl bg-violet-200 shadow-lg transition-all delay-50 hover:scale-110"
+            class="w-full cursor-pointer bg-violet-200 shadow-lg transition-all delay-50 hover:scale-110"
         >
             <img
                 :src="`/images/${item.img}`"
                 alt="art-piece-image"
-                class="h-56 w-full rounded-t-xl 2xl:h-60"
+                class="h-56 w-full 2xl:h-60"
             />
 
             <div class="w-full">

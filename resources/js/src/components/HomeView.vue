@@ -62,19 +62,25 @@ const pieces = [
         id: 1,
         img: "pieces/impresion-sol-naciente.jpg",
         title: "Impresión, sol naciente",
-        date: "22/07/2025",
+        date: "1872",
+        description: "",
+        tags: [""],
     },
     {
         id: 2,
         img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
         title: "La Ejecución de Lady Jane Grey",
-        date: "22/07/2025",
+        date: "1833",
+        description: "",
+        tags: [""],
     },
     {
         id: 3,
         img: "pieces/ecce-hommo.jpg",
         title: "Ecce Homo",
-        date: "22/07/2025",
+        date: "1871",
+        description: "",
+        tags: [""],
     },
 ];
 
