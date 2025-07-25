@@ -47,6 +47,7 @@ const pieces = [
         date: "22/07/2025",
         description: "",
         tags: [""],
+        route: "/art-piece/",
     },
     {
         id: 2,
@@ -55,6 +56,7 @@ const pieces = [
         date: "22/07/2025",
         description: "",
         tags: [""],
+        route: "/art-piece/",
     },
     {
         id: 3,
@@ -63,6 +65,7 @@ const pieces = [
         date: "22/07/2025",
         description: "",
         tags: [""],
+        route: "/art-piece/",
     },
 ];
 </script>
@@ -116,6 +119,7 @@ const pieces = [
                         v-for="item in pieces"
                         :key="item.id"
                         :item="item"
+                        :route="item.route"
                     />
                 </div>
             </div>
