@@ -37,7 +37,7 @@ function handleClick(item) {
     <!-- navbar -->
     <nav>
         <div
-            class="relative flex h-24 max-h-24 items-center justify-between bg-violet-300 p-5 shadow-lg shadow-gray-300"
+            class="flex h-24 max-h-24 items-center justify-between bg-violet-300 p-5 shadow-lg shadow-gray-300"
         >
             <div class="flex items-center">
                 <!-- burger menu icon en caso de que el ancho baje -->
@@ -60,14 +60,7 @@ function handleClick(item) {
                 <!-- titulo de la pagina -->
                 <h1 class="mx-5 text-xl sm:text-2xl">Enciclopedia de arte</h1>
             </div>
-            <!-- <div class="hidden items-center gap-5 text-xl lg:flex">
-                <h1 class="">Barra de búsqueda</h1>
-                <img
-                    src="/public/images/navbar/magnifying-glass.png"
-                    alt="search-icon"
-                    class="h-7 w-7"
-                />
-            </div> -->
+
             <RouterLink to="/login">
                 <div class="flex">
                     <button
@@ -94,7 +87,7 @@ function handleClick(item) {
         leave-from-class="opacity-100 translate-y-0"
         leave-to-class="opacity-0 -translate-y-2"
     >
-        <div v-if="menuVisible" class="absolute w-full sm:hidden">
+        <div v-if="menuVisible" class="absolute z-50 w-full sm:hidden">
             <ul
                 class="rounded-b-md bg-violet-300 px-2 text-xl shadow-lg shadow-gray-600"
             >
