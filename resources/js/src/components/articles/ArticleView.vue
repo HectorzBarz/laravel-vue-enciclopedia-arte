@@ -4,29 +4,12 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const id = route.params.id;
 console.log(`HOLA DESDE DETALLES DE ARTÍCULO CON ID: ${{ id }}`);
-</script>
 
-<template>
-    <!-- seccion imagen articulo -->
-
-    <section
-        class="relative my-10 flex h-full w-full flex-wrap items-center justify-center"
-    >
-        <img
-            src="/public/images/article/Impresionismo_ejemplo.jpg"
-            alt="article-image"
-        />
-    </section>
-    <!-- FIN seccion imagen articulo -->
-    <main>
-        <div
-            class="my-5 flex flex-col justify-center rounded-lg bg-violet-100 py-5 text-center md:mx-16 xl:mx-52 2xl:mx-72"
-        >
-            <h1 class="mb-10 text-6xl">Título</h1>
-            <p
-                class="mb-10 text-4xl sm:mx-16 md:mx-20 md:border-l-2 md:px-5 lg:mx-40 xl:mx-40"
-            >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+const article = {
+    id: 1,
+    img: "article/drives-me-crazy.jpg",
+    title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                 vitae turpis id lacus dictum lacinia volutpat ut velit. Cras
                 vitae lorem imperdiet risus viverra commodo. In malesuada
                 posuere turpis, ut commodo felis efficitur et. In pharetra
@@ -40,7 +23,7 @@ console.log(`HOLA DESDE DETALLES DE ARTÍCULO CON ID: ${{ id }}`);
                 sodales vehicula. Pellentesque imperdiet purus congue, convallis
                 odio ac, tincidunt enim. Quisque consequat non ligula in
                 molestie. Praesent pulvinar metus mi, at pharetra velit tempor
-                ac. <br /><br />
+                ac.
 
                 Nam neque metus, aliquet et luctus in, commodo ac sapien.
                 Curabitur at metus condimentum ipsum dapibus sodales imperdiet
@@ -49,13 +32,39 @@ console.log(`HOLA DESDE DETALLES DE ARTÍCULO CON ID: ${{ id }}`);
                 Nullam suscipit orci quis velit pretium, at placerat odio
                 consectetur. Ut est metus, venenatis non fermentum et, iaculis
                 auctor erat. Nullam ut enim pulvinar, elementum sem ac, vehicula
-                dui.
-            </p>
+                dui.`,
+    date: "14/07/2025 11:23",
+    type: "Artistas",
+};
+</script>
+
+<template>
+    <div class="my-10 rounded-xl bg-violet-100 sm:mx-5 sm:p-5">
+        <section
+            class="mx-1 mb-5 md:mx-5 lg:mx-20 xl:mx-5 xl:grid xl:items-center"
+        >
+            <Image
+                :src="`/images/${article.img}`"
+                alt="piece-image"
+                class="content-center"
+                preview
+            />
+
+            <h1 class="p-5 text-center text-4xl underline md:px-10 lg:text-5xl">
+                {{ article.title }}
+            </h1>
+            <main class="rounded-lg bg-violet-200 text-center">
+                <p
+                    class="p-5 text-justify text-2xl sm:px-10 md:px-20 lg:px-20 lg:text-3xl xl:columns-2 xl:gap-20"
+                >
+                    {{ article.description }}
+                </p>
+            </main>
             <p
-                class="text-center text-2xl sm:mx-16 sm:text-start md:mx-36 lg:mx-40 xl:mx-40"
+                class="text-start text-2xl sm:mx-16 sm:text-start md:mx-36 lg:mx-40 xl:mx-40"
             >
-                23/07/20205 11:23
+                {{ article.date }}
             </p>
-        </div>
-    </main>
+        </section>
+    </div>
 </template>

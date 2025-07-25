@@ -8,7 +8,7 @@ const router = useRouter();
 const articles = [
     {
         id: 1,
-        img: "article/weyant-festejada.jpg",
+        img: "article/drives-me-crazy.jpg",
         title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
         date: "14/07/2025",
         type: "Artistas",
