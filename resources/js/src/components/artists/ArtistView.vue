@@ -1,10 +1,5 @@
 <script setup>
-import { useRoute } from "vue-router";
 import ItemCardHolder from "../layouts/ItemCardHolder.vue";
-
-const route = useRoute();
-const id = route.params.id;
-console.log(`HOLA DESDE DETALLES DE ARTÍCULO CON ID: ${{ id }}`);
 
 const artist = {
     id: 1,

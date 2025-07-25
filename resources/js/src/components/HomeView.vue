@@ -1,9 +1,6 @@
 <script setup>
 import ItemCardHolder from "./layouts/ItemCardHolder.vue";
 import Quoue from "./home/Quoue.vue";
-import { useRouter } from "vue-router";
-
-const router = useRouter();
 
 const articles = [
     {
@@ -41,19 +38,22 @@ const artists = [
         id: 1,
         img: "artist/francisco-de-goya.jpg",
         title: "Francisco de Goya",
-        date: "1746–1828",
+        start: 1746,
+        end: 1828,
     },
     {
         id: 2,
         img: "artist/diego-velazquez.jpg",
         title: "Diego Velázquez",
-        date: "1599–1660",
+        start: 1599,
+        end: 1660,
     },
     {
         id: 3,
         img: "artist/el-greco.jpg",
         title: "El Greco",
-        date: "1541–1614",
+        start: 1541,
+        end: 1614,
     },
 ];
 
@@ -89,19 +89,22 @@ const movements = [
         id: 1,
         img: "movements/san-jeronimo-escribiendo.jpg",
         title: "Barroco",
-        date: "1600–1750",
+        start: 1600,
+        end: 1750,
     },
     {
         id: 2,
         img: "movements/la-muerte-de-viriato.jpg",
         title: "Neoclasicismo",
-        date: "1750–1820",
+        start: 1750,
+        end: 1820,
     },
     {
         id: 3,
         img: "movements/paseo-por-el-acantilado-de-pourville.jpg",
         title: "Impresionismo",
-        date: "1872–1882",
+        start: 1872,
+        end: 1882,
     },
 ];
 </script>

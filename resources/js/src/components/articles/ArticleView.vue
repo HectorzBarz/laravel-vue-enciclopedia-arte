@@ -1,10 +1,4 @@
 <script setup>
-import { useRoute } from "vue-router";
-
-const route = useRoute();
-const id = route.params.id;
-console.log(`HOLA DESDE DETALLES DE ARTÍCULO CON ID: ${{ id }}`);
-
 const article = {
     id: 1,
     img: "article/drives-me-crazy.jpg",

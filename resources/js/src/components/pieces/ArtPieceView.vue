@@ -1,10 +1,4 @@
 <script setup>
-import { useRoute } from "vue-router";
-
-const route = useRoute();
-const id = route.params.id;
-console.log(`HOLA DESDE DETALLES DE PÁGINA DE LA OBRA CON ID: ${{ id }}`);
-
 const piece = {
     id: 1,
     img: "pieces/impresion-sol-naciente.jpg",
@@ -81,7 +75,7 @@ const piece = {
                 <h1
                     class="p-5 text-4xl underline md:px-10 lg:text-5xl xl:hidden"
                 >
-                    Impresión, sol naciente
+                    {{ piece.title }}
                 </h1>
                 <p
                     class="p-5 text-justify text-2xl sm:px-10 md:px-20 lg:px-20 lg:text-3xl xl:columns-2 xl:gap-20"
