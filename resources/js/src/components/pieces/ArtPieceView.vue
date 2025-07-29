@@ -55,7 +55,9 @@ const piece = {
             <div
                 class="mb-5 sm:px-5 md:mb-10 xl:content-center xl:items-center"
             >
-                <div class="my-5 grid gap-2 sm:flex sm:justify-around">
+                <div
+                    class="my-5 grid gap-2 sm:flex sm:justify-around lg:mx-10 lg:gap-5"
+                >
                     <p
                         class="mx-10 cursor-pointer rounded-sm border bg-violet-200 px-2.5 py-1 text-center text-xl transition-colors delay-100 hover:bg-violet-300 sm:mx-0 lg:text-2xl"
                         v-for="tag in piece.tags"
