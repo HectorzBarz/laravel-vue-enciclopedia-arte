@@ -25,4 +25,16 @@ class Artist extends Model
         return $this->belongsToMany(Movement::class, 'artist_movement');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    public function artPieces()
+    {
+        return $this->belongsToMany(ArtPiece::class, 'artist_art_piece');
+    }
+
+
 }
