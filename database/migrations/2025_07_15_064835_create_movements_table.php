@@ -10,12 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('art_piece_images', function (Blueprint $table) {
-            $table->unsignedBigInteger('art_piece_id')->nullable();
-            $table->foreign('art_piece_id')
-                ->references('id')
-                ->on('art_pieces')
-                ->onDelete('set null');
+        Schema::create('movements', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('description');
+            $table->year('start');
+            $table->year('end');
+            $table->string('img');
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('art_piece_images');
+        Schema::dropIfExists('art_eras');
     }
 };

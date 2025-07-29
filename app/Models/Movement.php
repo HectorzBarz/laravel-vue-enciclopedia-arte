@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ArticleImage extends Model
+class Movement extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,17 @@ class ArticleImage extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'article_id',
         'name',
+        'description',
+        'start',
+        'end',
+        'img',
     ];
+
+    public function artists()
+    {
+        return $this->belongsToMany(Artist::class, 'artist_movement');
+    }
+
+
 }

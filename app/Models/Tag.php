@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ArtPieceImage extends Model
+class Tag extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,13 @@ class ArtPieceImage extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'art_piece_id',
         'name',
     ];
+
+    public function artPieces()
+    {
+        return $this->belongsToMany(ArtPiece::class, 'art_piece_tag');
+    }
+
+
 }

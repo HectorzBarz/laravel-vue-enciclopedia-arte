@@ -10,12 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('artist_images', function (Blueprint $table) {
-            $table->unsignedBigInteger('artist_id')->nullable();
-            $table->foreign('artist_id')
-                ->references('id')
-                ->on('artists')
-                ->onDelete('set null');
+        Schema::create('artist_movement', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('artist_id')->constrained()->onDelete('cascade');
+            $table->foreignId('movement_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('artist_images');
+        Schema::dropIfExists('artist_movement');
     }
 };

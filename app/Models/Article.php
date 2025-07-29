@@ -13,8 +13,8 @@ class Article extends Model
      */
     protected $fillable = [
         'title',
-        'body',
+        'description',
         'type',
-        'published_at',
+        'img',
     ];
 }

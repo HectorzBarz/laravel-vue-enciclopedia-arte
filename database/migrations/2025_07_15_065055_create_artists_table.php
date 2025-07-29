@@ -12,10 +12,12 @@ return new class extends Migration {
     {
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('art_movement_id')->constrained('art_movements');
             $table->string('name');
             $table->string('country');
             $table->longText('description');
+            $table->year('start');
+            $table->year('end');
+
         });
     }
 
