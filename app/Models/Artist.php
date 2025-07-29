@@ -13,8 +13,16 @@ class Artist extends Model
      */
     protected $fillable = [
         'name',
-        'art_movement_id',
         'country',
         'description',
+        'start',
+        'end',
+        'img',
     ];
+
+    public function movements()
+    {
+        return $this->belongsToMany(Movement::class, 'artist_movement');
+    }
+
 }

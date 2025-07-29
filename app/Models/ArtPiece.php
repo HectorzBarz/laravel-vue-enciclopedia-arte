@@ -14,7 +14,14 @@ class ArtPiece extends Model
     protected $fillable = [
         'artist_id',
         'title',
-        'year',
         'description',
+        'date',
+        'img',
     ];
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'art_piece_tag');
+    }
+
 }

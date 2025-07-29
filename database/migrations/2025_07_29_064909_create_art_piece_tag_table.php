@@ -10,13 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('article_images', function (Blueprint $table) {
-            $table->unsignedBigInteger('article_id')->nullable();
-            $table->foreign('article_id')
-                ->references('id')
-                ->on('articles')
-                ->onDelete('set null');
+
+        Schema::create('art_piece_tag', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('art_piece_id')->constrained()->onDelete('cascade');
+            $table->foreignId('tag_id')->constrained()->onDelete('cascade');
         });
+
     }
 
     /**
@@ -24,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('article_images');
+        Schema::dropIfExists('art_piece_tag');
     }
 };
