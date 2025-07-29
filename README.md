@@ -5,13 +5,9 @@ my programming and designing skills
 
 ## Changes Done
 
--- Changed the web icon
--- Modified database
--- Run migrations
+-- Created Models Relations
+-- Created pivot table between ArtPieces and Artists
 
 ## To-Do
 
--- Change the web favicon
--- Modify database
--- Run migrations
--- Implement database to the page
+-- Connect Models
