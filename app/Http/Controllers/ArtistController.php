@@ -17,6 +17,15 @@ class ArtistController extends Controller
     }
 
     /**
+     * Display a listing of 3 resources.
+     */
+    public function home()
+    {
+        $artists = Artist::limit(3)->get();
+        return response()->json($artists);
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)

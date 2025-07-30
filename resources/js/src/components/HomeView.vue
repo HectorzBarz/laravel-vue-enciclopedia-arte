@@ -6,11 +6,19 @@ import { ref, onMounted } from "vue";
 import axios from "axios";
 
 const artists = ref([]);
+const pieces = ref([]);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("/api/artists");
+        const response = await axios.get("/api/artists/home");
         artists.value = response.data;
+    } catch (error) {
+        console.error("Error al cargar los artistas:", error);
+    }
+
+    try {
+        const response = await axios.get("/api/art-pieces/home");
+        pieces.value = response.data;
     } catch (error) {
         console.error("Error al cargar los artistas:", error);
     }
@@ -44,57 +52,6 @@ const articles = [
         title: "Ides Kihlen cumple 108 años: la pintora más longeva del arte argentino",
         date: "10/07/2025",
         type: "Artistas",
-    },
-];
-
-// const artists = [
-//     {
-//         id: 1,
-//         img: "artist/francisco-de-goya.jpg",
-//         title: "Francisco de Goya",
-//         start: 1746,
-//         end: 1828,
-//     },
-//     {
-//         id: 2,
-//         img: "artist/diego-velazquez.jpg",
-//         title: "Diego Velázquez",
-//         start: 1599,
-//         end: 1660,
-//     },
-//     {
-//         id: 3,
-//         img: "artist/el-greco.jpg",
-//         title: "El Greco",
-//         start: 1541,
-//         end: 1614,
-//     },
-// ];
-
-const pieces = [
-    {
-        id: 1,
-        img: "pieces/impresion-sol-naciente.jpg",
-        title: "Impresión, sol naciente",
-        date: "1872",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 2,
-        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
-        title: "La Ejecución de Lady Jane Grey",
-        date: "1833",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 3,
-        img: "pieces/ecce-hommo.jpg",
-        title: "Ecce Homo",
-        date: "1871",
-        description: "",
-        tags: [""],
     },
 ];
 
@@ -148,7 +105,7 @@ const movements = [
                             v-for="piece in pieces"
                             :key="piece.id"
                             :item="piece"
-                            route="/art-piece/"
+                            route="/art-pieces/"
                         >
                         </ItemCardHolder>
                     </div>

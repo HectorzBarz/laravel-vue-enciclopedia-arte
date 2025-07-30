@@ -14,7 +14,17 @@ class ArtPieceController extends Controller
      */
     public function index()
     {
-        //
+        $pieces = ArtPiece::all();
+        return response()->json($pieces);
+    }
+
+    /**
+     * Display a listing of 3 resources.
+     */
+    public function home()
+    {
+        $pieces = ArtPiece::limit(3)->get();
+        return response()->json($pieces);
     }
 
     /**
@@ -38,8 +48,13 @@ class ArtPieceController extends Controller
      */
     public function show(string $id)
     {
-        // $artist = Artist::all();
-        // return $artist;
+        $piece = ArtPiece::find($id);
+
+        if (!$piece) {
+            return response()->json(['message' => 'Pieza no encontrada'], 404);
+        }
+
+        return response()->json($piece);
     }
 
 

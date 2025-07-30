@@ -5,9 +5,7 @@ my programming and designing skills
 
 ## Changes Done
 
--- Configured Vue and Laravel to work at the same time
--- Minor database changes
--- Transfered Laravel web.php to api.php
--- Created artist seeding
--- Changed ArtistView to be database information
--- Changed HomeView artists section to database information
+-- Made Art Piece detail page take info from database
+-- Made HomePage take art piece info from database
+-- Created Art Piece seeder
+-- Made some changes to the ArtPiece controller

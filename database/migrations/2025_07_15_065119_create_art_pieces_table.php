@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->foreignId('artist_id')->constrained('artists');
             $table->string('title');
             $table->longText('description');
-            $table->year('date');
+            $table->integer('date');
             $table->string('img');
         });
     }
