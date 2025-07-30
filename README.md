@@ -5,6 +5,4 @@ my programming and designing skills
 
 ## Changes Done
 
--- Modifies Article controller and migration
--- Created Articles Seeder
--- Modified Home and Article view to be database based
+-- Artist View now shows the artist movements

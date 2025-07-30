@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\ArtistMovementController;
 use App\Http\Controllers\ArtPieceController;
 use App\Http\Controllers\MovementController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +18,8 @@ Route::prefix('artists')->controller(ArtistController::class)->group(function ()
     Route::get('/home', 'home');
     Route::get('{id}', 'show');
 });
+
+Route::get('/artists/{id}/movements', [ArtistMovementController::class, 'getMovementsByArtist']);
 
 Route::prefix('art-pieces')->controller(ArtPieceController::class)->group(function () {
     Route::get('/', 'index');
@@ -35,3 +39,4 @@ Route::prefix('articles')->controller(ArticleController::class)->group(function 
     Route::get('/home', 'home');
     Route::get('{id}', 'show');
 });
+

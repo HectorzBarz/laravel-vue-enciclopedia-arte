@@ -12,31 +12,19 @@ const articles = ref([]);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("/api/artists/home");
-        artists.value = response.data;
-    } catch (error) {
-        console.error("Error al cargar los artistas:", error);
-    }
-
-    try {
         const response = await axios.get("/api/art-pieces/home");
         pieces.value = response.data;
-    } catch (error) {
-        console.error("Error al cargar las obras:", error);
-    }
 
-    try {
-        const response = await axios.get("/api/movements/home");
-        movements.value = response.data;
-    } catch (error) {
-        console.error("Error al cargar los movimientos:", error);
-    }
+        const artistResponse = await axios.get("/api/artists/home");
+        artists.value = artistResponse.data;
 
-    try {
-        const response = await axios.get("/api/articles/home");
-        articles.value = response.data;
+        const movementResponse = await axios.get("/api/movements/home");
+        movements.value = movementResponse.data;
+
+        const articleResponse = await axios.get("/api/articles/home");
+        articles.value = articleResponse.data;
     } catch (error) {
-        console.error("Error al cargar los artículis:", error);
+        console.error("Error al cargar los datos:", error);
     }
 });
 </script>
@@ -120,18 +108,18 @@ onMounted(async () => {
             <!-- FIN contenedor de las secciones "Obras" y "Artistas" -->
 
             <!-- contenedor de los artículos recientes -->
+
             <div class="w-full">
                 <section
                     id="articles"
                     class="border-t-2 border-violet-200 py-2 xl:border-t-0 xl:border-l-2 xl:py-32 2xl:my-5"
-                    v-if="articles"
                 >
                     <h3 class="font-soul mb-2.5 text-center text-3xl font-bold">
                         Artículos recientes
                     </h3>
 
                     <div
-                        class="grid justify-around gap-10 px-20 py-2 sm:grid-cols-2 md:px-10 lg:px-24 xl:px-16 xl:py-0"
+                        class="grid justify-around gap-10 px-5 sm:px-32 md:grid-cols-2 md:px-10 lg:grid-cols-3 xl:grid-cols-2"
                     >
                         <ItemCardHolder
                             v-for="(article, index) in articles"

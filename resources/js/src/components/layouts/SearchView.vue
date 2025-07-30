@@ -1,6 +1,8 @@
 <script setup>
 import ItemCardHolder from "./ItemCardHolder.vue";
 import { useSearchStore } from "../../stores/SearchStore";
+import { ref, onMounted } from "vue";
+import axios from "axios";
 
 // store de las checkboxes
 const store = useSearchStore();
@@ -57,6 +59,16 @@ const menuMovements = [
     "Arte Povera",
 ];
 
+// const items = ref([]);
+
+// onMounted(async () => {
+//     try {
+//         const response = await axios.get("/api/search");
+//         items.value = response.data;
+//     } catch (error) {
+//         console.error("Error al cargar los artistas:", error);
+//     }
+// });
 const items = [
     {
         img: "articles/drives-me-crazy.jpg",
