@@ -12,7 +12,17 @@ class MovementController extends Controller
      */
     public function index()
     {
-        //
+        $movements = Movement::all();
+        return response()->json($movements);
+    }
+
+    /**
+     * Display a listing of 3 resources.
+     */
+    public function home()
+    {
+        $movements = Movement::limit(3)->get();
+        return response()->json($movements);
     }
 
     /**
@@ -34,9 +44,15 @@ class MovementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Movement $movement)
+    public function show(string $id)
     {
-        //
+        $movement = Movement::find($id);
+
+        if (!$movement) {
+            return response()->json(['message' => 'Movimiento no encontrada'], 404);
+        }
+
+        return response()->json($movement);
     }
 
     /**

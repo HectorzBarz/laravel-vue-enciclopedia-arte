@@ -5,7 +5,6 @@ my programming and designing skills
 
 ## Changes Done
 
--- Made Art Piece detail page take info from database
--- Made HomePage take art piece info from database
--- Created Art Piece seeder
--- Made some changes to the ArtPiece controller
+-- Modifies Movement controller and migration
+-- Created Movements Seeder
+-- Modified Home and Movement view to be database based

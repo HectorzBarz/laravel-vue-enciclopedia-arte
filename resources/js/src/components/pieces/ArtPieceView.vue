@@ -66,4 +66,9 @@ onMounted(async () => {
             </main>
         </section>
     </div>
+    <div v-else>
+        <section class="m-20 flex justify-center">
+            <ProgressSpinner />
+        </section>
+    </div>
 </template>

@@ -7,6 +7,7 @@ import axios from "axios";
 
 const artists = ref([]);
 const pieces = ref([]);
+const movements = ref([]);
 
 onMounted(async () => {
     try {
@@ -19,6 +20,13 @@ onMounted(async () => {
     try {
         const response = await axios.get("/api/art-pieces/home");
         pieces.value = response.data;
+    } catch (error) {
+        console.error("Error al cargar los artistas:", error);
+    }
+
+    try {
+        const response = await axios.get("/api/movements/home");
+        movements.value = response.data;
     } catch (error) {
         console.error("Error al cargar los artistas:", error);
     }
@@ -54,30 +62,6 @@ const articles = [
         type: "Artistas",
     },
 ];
-
-const movements = [
-    {
-        id: 1,
-        img: "movements/san-jeronimo-escribiendo.jpg",
-        title: "Barroco",
-        start: 1600,
-        end: 1750,
-    },
-    {
-        id: 2,
-        img: "movements/la-muerte-de-viriato.jpg",
-        title: "Neoclasicismo",
-        start: 1750,
-        end: 1820,
-    },
-    {
-        id: 3,
-        img: "movements/paseo-por-el-acantilado-de-pourville.jpg",
-        title: "Impresionismo",
-        start: 1872,
-        end: 1882,
-    },
-];
 </script>
 
 <template>
@@ -93,7 +77,7 @@ const movements = [
             <!-- contenedor de las secciones "Obras", "Artistas" y "Artículos Recientes"-->
             <div class="w-full">
                 <!-- seccion de "Obras" -->
-                <section id="pieces-articles" class="my-5">
+                <section id="pieces-section" class="my-5" v-if="pieces">
                     <h3 class="font-soul mb-2.5 text-center text-2xl font-bold">
                         Obras
                     </h3>
@@ -113,8 +97,9 @@ const movements = [
 
                 <!-- seccion de "Artistas" -->
                 <section
-                    id="artists-article"
+                    id="artists-section"
                     class="my-5 border-t-2 border-violet-200 py-2"
+                    v-if="artists"
                 >
                     <h3 class="font-soul mb-2.5 text-center text-2xl font-bold">
                         Artistas
@@ -134,8 +119,9 @@ const movements = [
 
                 <!-- seccion de movimientos artísticos -->
                 <section
-                    id="articles"
+                    id="movements-section"
                     class="my-5 border-t-2 border-violet-200 py-2"
+                    v-if="movements"
                 >
                     <h3 class="font-soul mb-2.5 text-center text-2xl font-bold">
                         Movimientos Artísticos
@@ -153,6 +139,7 @@ const movements = [
                     </div>
                 </section>
             </div>
+
             <!-- FIN contenedor de las secciones "Obras" y "Artistas" -->
 
             <!-- contenedor de los artículos recientes -->
@@ -177,8 +164,10 @@ const movements = [
                     </div>
                 </section>
             </div>
+
             <!-- FIN contenedor de los artículos recientes -->
         </div>
+
         <!-- FIN contenedor de todas las secciones del main -->
     </main>
 </template>

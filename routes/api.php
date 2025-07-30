@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ArtPieceController;
+use App\Http\Controllers\MovementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,14 @@ Route::prefix('artists')->controller(ArtistController::class)->group(function ()
 });
 
 Route::prefix('art-pieces')->controller(ArtPieceController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/home', 'home');
+
+    Route::get('{id}', 'show');
+});
+
+
+Route::prefix('movements')->controller(MovementController::class)->group(function () {
     Route::get('/', 'index');
     Route::get('/home', 'home');
 

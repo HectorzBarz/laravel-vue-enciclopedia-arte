@@ -51,7 +51,7 @@ class ArtPieceController extends Controller
         $piece = ArtPiece::find($id);
 
         if (!$piece) {
-            return response()->json(['message' => 'Pieza no encontrada'], 404);
+            return response()->json(['message' => 'Movimiento no encontrado'], 404);
         }
 
         return response()->json($piece);
