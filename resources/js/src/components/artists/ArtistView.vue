@@ -7,11 +7,16 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 const artist = ref(null);
+const movements = ref(null);
 
 onMounted(async () => {
     try {
         const response = await axios.get(`/api/artists/${route.params.id}`);
         artist.value = response.data;
+        const movementsResponse = await axios.get(
+            `/api/artists/${route.params.id}/movements`,
+        );
+        movements.value = movementsResponse.data;
     } catch (error) {
         console.error("Error al cargar el artista:", error);
     }
@@ -74,9 +79,9 @@ const pieces = [
                     >
                         <p
                             class="cursor-pointer rounded-sm border bg-violet-200 px-2.5 py-1 text-xl transition-colors delay-100 hover:bg-violet-300"
-                            v-for="item in artist.movements"
+                            v-for="item in movements"
                         >
-                            {{ item }}
+                            {{ item.title }}
                         </p>
                     </div>
                 </div>

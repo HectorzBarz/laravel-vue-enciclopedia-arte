@@ -19,7 +19,7 @@ class Artist extends Model
 
     public function movements()
     {
-        return $this->belongsToMany(Movement::class, 'artist_movement');
+        return $this->belongsToMany(Movement::class, 'artist_movements');
     }
 
     public function user()
