@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+
 
 class ArticleController extends Controller
 {
@@ -13,7 +13,17 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $pieces = Article::all();
+        return response()->json($pieces);
+    }
+
+    /**
+     * Display a listing of 3 resources.
+     */
+    public function home()
+    {
+        $pieces = Article::limit(4)->get();
+        return response()->json($pieces);
     }
 
     /**
@@ -35,10 +45,15 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Article $article)
+    public function show(string $id)
     {
-        //
-        return Inertia::render('articles/ArticleView');
+        $article = Article::find($id);
+
+        if (!$article) {
+            return response()->json(['message' => 'Articulo no encontrado'], 404);
+        }
+
+        return response()->json($article);
     }
 
     /**

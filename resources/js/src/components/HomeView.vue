@@ -8,6 +8,7 @@ import axios from "axios";
 const artists = ref([]);
 const pieces = ref([]);
 const movements = ref([]);
+const articles = ref([]);
 
 onMounted(async () => {
     try {
@@ -21,47 +22,23 @@ onMounted(async () => {
         const response = await axios.get("/api/art-pieces/home");
         pieces.value = response.data;
     } catch (error) {
-        console.error("Error al cargar los artistas:", error);
+        console.error("Error al cargar las obras:", error);
     }
 
     try {
         const response = await axios.get("/api/movements/home");
         movements.value = response.data;
     } catch (error) {
-        console.error("Error al cargar los artistas:", error);
+        console.error("Error al cargar los movimientos:", error);
+    }
+
+    try {
+        const response = await axios.get("/api/articles/home");
+        articles.value = response.data;
+    } catch (error) {
+        console.error("Error al cargar los artículis:", error);
     }
 });
-
-const articles = [
-    {
-        id: 1,
-        img: "articles/drives-me-crazy.jpg",
-        title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
-        date: "14/07/2025",
-        type: "Artistas",
-    },
-    {
-        id: 2,
-        img: "articles/tesoro-de-dahomey.jpg",
-        title: "El retorno del tesoro de Dahomey: justicia histórica en Benín",
-        date: "16/05/2025",
-        type: "Obras",
-    },
-    {
-        id: 3,
-        img: "articles/jardin-de-las-delicias.jpg",
-        title: "El secreto del cuadro más mirado del Prado: “El jardín de las delicias”",
-        date: "16/04/2025",
-        type: "Obras",
-    },
-    {
-        id: 4,
-        img: "articles/ides-kihlen.jpg",
-        title: "Ides Kihlen cumple 108 años: la pintora más longeva del arte argentino",
-        date: "10/07/2025",
-        type: "Artistas",
-    },
-];
 </script>
 
 <template>
@@ -147,6 +124,7 @@ const articles = [
                 <section
                     id="articles"
                     class="border-t-2 border-violet-200 py-2 xl:border-t-0 xl:border-l-2 xl:py-32 2xl:my-5"
+                    v-if="articles"
                 >
                     <h3 class="font-soul mb-2.5 text-center text-3xl font-bold">
                         Artículos recientes

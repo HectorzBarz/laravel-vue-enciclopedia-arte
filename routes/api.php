@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ArtPieceController;
 use App\Http\Controllers\MovementController;
@@ -23,10 +24,14 @@ Route::prefix('art-pieces')->controller(ArtPieceController::class)->group(functi
     Route::get('{id}', 'show');
 });
 
-
 Route::prefix('movements')->controller(MovementController::class)->group(function () {
     Route::get('/', 'index');
     Route::get('/home', 'home');
+    Route::get('{id}', 'show');
+});
 
+Route::prefix('articles')->controller(ArticleController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/home', 'home');
     Route::get('{id}', 'show');
 });

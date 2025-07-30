@@ -5,6 +5,6 @@ my programming and designing skills
 
 ## Changes Done
 
--- Modifies Movement controller and migration
--- Created Movements Seeder
--- Modified Home and Movement view to be database based
+-- Modifies Article controller and migration
+-- Created Articles Seeder
+-- Modified Home and Article view to be database based
