@@ -5,9 +5,9 @@ my programming and designing skills
 
 ## Changes Done
 
--- Created Models Relations
--- Created pivot table between ArtPieces and Artists
-
-## To-Do
-
--- Connect Models
+-- Configured Vue and Laravel to work at the same time
+-- Minor database changes
+-- Transfered Laravel web.php to api.php
+-- Created artist seeding
+-- Changed ArtistView to be database information
+-- Changed HomeView artists section to database information

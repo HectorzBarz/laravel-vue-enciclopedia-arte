@@ -6,13 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Artist extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+
+    public $timestamps = false;
     protected $fillable = [
-        'name',
+        'title',
         'country',
         'description',
         'start',

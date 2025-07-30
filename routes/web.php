@@ -1,12 +1,16 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\ArtPieceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
 
 // routes/web.php
 Route::get('/{any}', function () {
-    return view('welcome'); // o 'welcome', lo que estés usando
+    return view('app');
 })->where('any', '.*');
+

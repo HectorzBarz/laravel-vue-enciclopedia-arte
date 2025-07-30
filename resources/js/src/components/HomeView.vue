@@ -2,60 +2,74 @@
 import ItemCardHolder from "./layouts/ItemCardHolder.vue";
 import Quoue from "./home/Quoue.vue";
 
+import { ref, onMounted } from "vue";
+import axios from "axios";
+
+const artists = ref([]);
+
+onMounted(async () => {
+    try {
+        const response = await axios.get("/api/artists");
+        artists.value = response.data;
+    } catch (error) {
+        console.error("Error al cargar los artistas:", error);
+    }
+});
+
 const articles = [
     {
         id: 1,
-        img: "article/drives-me-crazy.jpg",
+        img: "articles/drives-me-crazy.jpg",
         title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
         date: "14/07/2025",
         type: "Artistas",
     },
     {
         id: 2,
-        img: "article/tesoro-de-dahomey.jpg",
+        img: "articles/tesoro-de-dahomey.jpg",
         title: "El retorno del tesoro de Dahomey: justicia histórica en Benín",
         date: "16/05/2025",
         type: "Obras",
     },
     {
         id: 3,
-        img: "article/jardin-de-las-delicias.jpg",
+        img: "articles/jardin-de-las-delicias.jpg",
         title: "El secreto del cuadro más mirado del Prado: “El jardín de las delicias”",
         date: "16/04/2025",
         type: "Obras",
     },
     {
         id: 4,
-        img: "article/ides-kihlen.jpg",
+        img: "articles/ides-kihlen.jpg",
         title: "Ides Kihlen cumple 108 años: la pintora más longeva del arte argentino",
         date: "10/07/2025",
         type: "Artistas",
     },
 ];
 
-const artists = [
-    {
-        id: 1,
-        img: "artist/francisco-de-goya.jpg",
-        title: "Francisco de Goya",
-        start: 1746,
-        end: 1828,
-    },
-    {
-        id: 2,
-        img: "artist/diego-velazquez.jpg",
-        title: "Diego Velázquez",
-        start: 1599,
-        end: 1660,
-    },
-    {
-        id: 3,
-        img: "artist/el-greco.jpg",
-        title: "El Greco",
-        start: 1541,
-        end: 1614,
-    },
-];
+// const artists = [
+//     {
+//         id: 1,
+//         img: "artist/francisco-de-goya.jpg",
+//         title: "Francisco de Goya",
+//         start: 1746,
+//         end: 1828,
+//     },
+//     {
+//         id: 2,
+//         img: "artist/diego-velazquez.jpg",
+//         title: "Diego Velázquez",
+//         start: 1599,
+//         end: 1660,
+//     },
+//     {
+//         id: 3,
+//         img: "artist/el-greco.jpg",
+//         title: "El Greco",
+//         start: 1541,
+//         end: 1614,
+//     },
+// ];
 
 const pieces = [
     {

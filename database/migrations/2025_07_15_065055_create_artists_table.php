@@ -12,11 +12,12 @@ return new class extends Migration {
     {
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->string('country');
             $table->longText('description');
-            $table->year('start');
-            $table->year('end');
+            $table->integer('start')->nullable();
+            $table->integer('end')->nullable();
+            $table->string('img')->nullable();
 
         });
     }
