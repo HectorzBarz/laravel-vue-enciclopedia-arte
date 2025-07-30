@@ -1,43 +1,21 @@
 <script setup>
 import ItemCardHolder from "../layouts/ItemCardHolder.vue";
 
-const artist = {
-    id: 1,
-    name: "Francisco de Goya",
-    movements: ["Rococó", "Neoclasicismo", "Romanticismo"],
-    country: "España",
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla nibh urna, pellentesque ac est vel, mollis convallis
-                    urna. Suspendisse quis vestibulum nulla. Suspendisse
-                    accumsan semper orci, a ullamcorper orci. Nunc nec justo ut
-                    libero luctus auctor. Suspendisse et ligula a magna
-                    vulputate pretium in sed est. Praesent magna augue, accumsan
-                    non convallis eu, commodo sed nisi. Sed lobortis urna nisi,
-                    eu sagittis felis facilisis placerat. Quisque fringilla
-                    luctus turpis, tristique molestie turpis fermentum a.
-                    Aliquam sit amet nulla at augue faucibus laoreet et sed
-                    quam. Morbi suscipit, magna a porttitor suscipit, justo
-                    felis cursus mi, sit amet lobortis nisl massa eget felis.
-                    Nam hendrerit felis id erat elementum efficitur. Donec ut
-                    nisi dui. Ut malesuada ligula ligula, sit amet bibendum odio
-                    dapibus ac. Nam malesuada luctus dui, non dignissim orci
-                    blandit sit amet. In molestie sed mauris sed sollicitudin.
-                    Vestibulum ante ipsum primis in faucibus orci luctus et
-                    ultrices posuere cubilia curae; Aenean dui dolor, viverra
-                    porttitor felis ut, ultricies pharetra ipsum. Curabitur sed
-                    auctor tortor. In eleifend est non sodales lobortis. Sed nec
-                    lectus vitae erat viverra consectetur. Pellentesque ultrices
-                    turpis at nibh varius dapibus quis non mi. Ut bibendum, nunc
-                    eu lobortis gravida, ipsum massa luctus nibh, sit amet
-                    finibus mi leo quis justo. Quisque lectus quam, sodales vel
-                    arcu nec, vestibulum ornare ante. Cras vitae volutpat metus.
-                    Duis dictum erat at felis lacinia iaculis vitae sed sapien.
-                    Curabitur pellentesque, est at maximus fermentum, felis
-                    justo finibus nulla, at consectetur libero ligula a dui.`,
-    startYear: 1746,
-    lastYear: 1828,
-    img: "artist/francisco-de-goya.jpg",
-};
+import { ref, onMounted } from "vue";
+import axios from "axios";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const artist = ref(null);
+
+onMounted(async () => {
+    try {
+        const response = await axios.get(`/api/artists/${route.params.id}`);
+        artist.value = response.data;
+    } catch (error) {
+        console.error("Error al cargar el artista:", error);
+    }
+});
 
 const pieces = [
     {
@@ -69,10 +47,10 @@ const pieces = [
     },
 ];
 </script>
-
 <template>
     <div
         class="my-10 flex h-full flex-col rounded-2xl bg-violet-100 sm:p-5 lg:mx-20 xl:mx-16 xl:flex-row"
+        v-if="artist"
     >
         <section class="border-b-2 border-violet-200 xl:border-0">
             <div
@@ -88,8 +66,8 @@ const pieces = [
                 <div class="px-5 py-5">
                     <p class="mb-1 text-4xl">{{ artist.name }}</p>
                     <p class="mb-2 text-2xl">
-                        {{ artist.country }}, {{ artist.startYear }} -
-                        {{ artist.lastYear }}
+                        {{ artist.country }}, {{ artist.start }} -
+                        {{ artist.end }}
                     </p>
                     <div
                         class="flex flex-col gap-5 text-center sm:flex-row sm:text-start"
@@ -123,6 +101,11 @@ const pieces = [
                     />
                 </div>
             </div>
+        </section>
+    </div>
+    <div v-else>
+        <section class="m-20 flex justify-center">
+            <ProgressSpinner />
         </section>
     </div>
 </template>

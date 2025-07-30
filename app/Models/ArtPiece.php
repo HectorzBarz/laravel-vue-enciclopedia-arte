@@ -6,11 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArtPiece extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    public $timestamps = false;
     protected $fillable = [
         'artist_id',
         'title',

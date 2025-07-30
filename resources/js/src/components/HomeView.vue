@@ -2,111 +2,43 @@
 import ItemCardHolder from "./layouts/ItemCardHolder.vue";
 import Quoue from "./home/Quoue.vue";
 
-const articles = [
-    {
-        id: 1,
-        img: "article/drives-me-crazy.jpg",
-        title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
-        date: "14/07/2025",
-        type: "Artistas",
-    },
-    {
-        id: 2,
-        img: "article/tesoro-de-dahomey.jpg",
-        title: "El retorno del tesoro de Dahomey: justicia histórica en Benín",
-        date: "16/05/2025",
-        type: "Obras",
-    },
-    {
-        id: 3,
-        img: "article/jardin-de-las-delicias.jpg",
-        title: "El secreto del cuadro más mirado del Prado: “El jardín de las delicias”",
-        date: "16/04/2025",
-        type: "Obras",
-    },
-    {
-        id: 4,
-        img: "article/ides-kihlen.jpg",
-        title: "Ides Kihlen cumple 108 años: la pintora más longeva del arte argentino",
-        date: "10/07/2025",
-        type: "Artistas",
-    },
-];
+import { ref, onMounted } from "vue";
+import axios from "axios";
 
-const artists = [
-    {
-        id: 1,
-        img: "artist/francisco-de-goya.jpg",
-        title: "Francisco de Goya",
-        start: 1746,
-        end: 1828,
-    },
-    {
-        id: 2,
-        img: "artist/diego-velazquez.jpg",
-        title: "Diego Velázquez",
-        start: 1599,
-        end: 1660,
-    },
-    {
-        id: 3,
-        img: "artist/el-greco.jpg",
-        title: "El Greco",
-        start: 1541,
-        end: 1614,
-    },
-];
+const artists = ref([]);
+const pieces = ref([]);
+const movements = ref([]);
+const articles = ref([]);
 
-const pieces = [
-    {
-        id: 1,
-        img: "pieces/impresion-sol-naciente.jpg",
-        title: "Impresión, sol naciente",
-        date: "1872",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 2,
-        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
-        title: "La Ejecución de Lady Jane Grey",
-        date: "1833",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 3,
-        img: "pieces/ecce-hommo.jpg",
-        title: "Ecce Homo",
-        date: "1871",
-        description: "",
-        tags: [""],
-    },
-];
+onMounted(async () => {
+    try {
+        const response = await axios.get("/api/artists/home");
+        artists.value = response.data;
+    } catch (error) {
+        console.error("Error al cargar los artistas:", error);
+    }
 
-const movements = [
-    {
-        id: 1,
-        img: "movements/san-jeronimo-escribiendo.jpg",
-        title: "Barroco",
-        start: 1600,
-        end: 1750,
-    },
-    {
-        id: 2,
-        img: "movements/la-muerte-de-viriato.jpg",
-        title: "Neoclasicismo",
-        start: 1750,
-        end: 1820,
-    },
-    {
-        id: 3,
-        img: "movements/paseo-por-el-acantilado-de-pourville.jpg",
-        title: "Impresionismo",
-        start: 1872,
-        end: 1882,
-    },
-];
+    try {
+        const response = await axios.get("/api/art-pieces/home");
+        pieces.value = response.data;
+    } catch (error) {
+        console.error("Error al cargar las obras:", error);
+    }
+
+    try {
+        const response = await axios.get("/api/movements/home");
+        movements.value = response.data;
+    } catch (error) {
+        console.error("Error al cargar los movimientos:", error);
+    }
+
+    try {
+        const response = await axios.get("/api/articles/home");
+        articles.value = response.data;
+    } catch (error) {
+        console.error("Error al cargar los artículis:", error);
+    }
+});
 </script>
 
 <template>
@@ -122,7 +54,7 @@ const movements = [
             <!-- contenedor de las secciones "Obras", "Artistas" y "Artículos Recientes"-->
             <div class="w-full">
                 <!-- seccion de "Obras" -->
-                <section id="pieces-articles" class="my-5">
+                <section id="pieces-section" class="my-5" v-if="pieces">
                     <h3 class="font-soul mb-2.5 text-center text-2xl font-bold">
                         Obras
                     </h3>
@@ -134,7 +66,7 @@ const movements = [
                             v-for="piece in pieces"
                             :key="piece.id"
                             :item="piece"
-                            route="/art-piece/"
+                            route="/art-pieces/"
                         >
                         </ItemCardHolder>
                     </div>
@@ -142,8 +74,9 @@ const movements = [
 
                 <!-- seccion de "Artistas" -->
                 <section
-                    id="artists-article"
+                    id="artists-section"
                     class="my-5 border-t-2 border-violet-200 py-2"
+                    v-if="artists"
                 >
                     <h3 class="font-soul mb-2.5 text-center text-2xl font-bold">
                         Artistas
@@ -163,8 +96,9 @@ const movements = [
 
                 <!-- seccion de movimientos artísticos -->
                 <section
-                    id="articles"
+                    id="movements-section"
                     class="my-5 border-t-2 border-violet-200 py-2"
+                    v-if="movements"
                 >
                     <h3 class="font-soul mb-2.5 text-center text-2xl font-bold">
                         Movimientos Artísticos
@@ -182,6 +116,7 @@ const movements = [
                     </div>
                 </section>
             </div>
+
             <!-- FIN contenedor de las secciones "Obras" y "Artistas" -->
 
             <!-- contenedor de los artículos recientes -->
@@ -189,6 +124,7 @@ const movements = [
                 <section
                     id="articles"
                     class="border-t-2 border-violet-200 py-2 xl:border-t-0 xl:border-l-2 xl:py-32 2xl:my-5"
+                    v-if="articles"
                 >
                     <h3 class="font-soul mb-2.5 text-center text-3xl font-bold">
                         Artículos recientes
@@ -206,8 +142,10 @@ const movements = [
                     </div>
                 </section>
             </div>
+
             <!-- FIN contenedor de los artículos recientes -->
         </div>
+
         <!-- FIN contenedor de todas las secciones del main -->
     </main>
 </template>

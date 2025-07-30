@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('movements', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->year('start');
-            $table->year('end');
+            $table->string('title');
+            $table->longText('description');
+            $table->integer('start');
+            $table->integer('end');
             $table->string('img');
         });
     }

@@ -1,20 +1,20 @@
 <script setup>
 import ItemCardHolder from "../layouts/ItemCardHolder.vue";
+import { ref, onMounted } from "vue";
+import axios from "axios";
+import { useRoute } from "vue-router";
 
-const movement = {
-    id: 1,
-    img: "movements/san-jeronimo-escribiendo.jpg",
-    title: "Barroco",
-    description: `El Barroco trasciende del arte. Fue un período cultural, científico, tecnológico, filosófico, político, económico… Aunque probablemente sea en el arte donde mejor se ilustra el clima del momento.
+const route = useRoute();
+const movement = ref(null);
 
-El siglo XVII nace con cambios políticos (los estados modernos), religiosos (la contrarreforma), tecnológicos (el telescopio), económicos (crisis) y sociales (la burguesía). Con esa atmósfera surge un estilo anti-clásico, menos racional y más apasionado, una reacción contra lo anterior como suele -y debe- pasar a lo largo de la historia del arte.
-
-El arte se volvió dinámico, teatral, efectista. Busca sorprender, asombrar. Eso no quiere decir que se elimine el realismo. Todo lo contrario: se recrudece. En esa época de crisis económica, el hombre se enfrenta de forma más radical a la realidad.
-
-Aún así se distorsiona todo, se violenta. Se potencian los contrastes (el tenebrismo) y el desequilibrio.`,
-    start: 1600,
-    end: 1750,
-};
+onMounted(async () => {
+    try {
+        const response = await axios.get(`/api/movements/${route.params.id}`);
+        movement.value = response.data;
+    } catch (error) {
+        console.error("Error al cargar la obra:", error);
+    }
+});
 
 const pieces = [
     {
@@ -85,7 +85,7 @@ const pieces = [
 </script>
 
 <template>
-    <div class="bg-violet-100 sm:mx-5 sm:p-5">
+    <div class="bg-violet-100 sm:mx-5 sm:p-5" v-if="movement">
         <!-- seccion del contenido principal del movimiento  -->
         <div class="grid items-center justify-center xl:grid-cols-2">
             <section>
@@ -132,5 +132,10 @@ const pieces = [
             </div>
         </section>
         <!-- FIN seccion obras representativas -->
+    </div>
+    <div v-else>
+        <section class="m-20 flex justify-center">
+            <ProgressSpinner />
+        </section>
     </div>
 </template>

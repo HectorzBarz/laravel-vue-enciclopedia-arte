@@ -59,19 +59,19 @@ const menuMovements = [
 
 const items = [
     {
-        img: "article/drives-me-crazy.jpg",
+        img: "articles/drives-me-crazy.jpg",
         title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
         date: "14/07/2025",
         route: "/articles/",
     },
     {
-        img: "artist/francisco-de-goya.jpg",
+        img: "artists/francisco-de-goya.jpg",
         title: "Francisco de Goya",
         date: "22/07/2025",
         route: "/artists/",
     },
     {
-        img: "artist/diego-velazquez.jpg",
+        img: "artists/diego-velazquez.jpg",
         title: "Diego Velázquez",
         date: "22/07/2025",
         route: "/artists/",

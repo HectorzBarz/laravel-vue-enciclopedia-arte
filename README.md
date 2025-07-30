@@ -5,9 +5,6 @@ my programming and designing skills
 
 ## Changes Done
 
--- Created Models Relations
--- Created pivot table between ArtPieces and Artists
-
-## To-Do
-
--- Connect Models
+-- Modifies Article controller and migration
+-- Created Articles Seeder
+-- Modified Home and Article view to be database based
