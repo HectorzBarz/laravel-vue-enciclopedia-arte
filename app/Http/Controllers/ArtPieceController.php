@@ -19,11 +19,11 @@ class ArtPieceController extends Controller
     }
 
     /**
-     * Display a listing of 3 resources.
+     * Display a listing of 3 pieces.
      */
     public function home()
     {
-        $pieces = ArtPiece::limit(3)->get();
+        $pieces = ArtPiece::orderByDesc('id')->limit(3)->get();
         return response()->json($pieces);
     }
 
