@@ -5,19 +5,16 @@ my programming and designing skills
 
 ## Changes Done
 
--- Artist View now shows the artist movements
+- HomePage, mostrar los mas recientes (orden descenciente)
 
 ## Working
 
-- HomePage, mostrar los mas recientes (orden descenciente)
-
 - BBDD, Crear Seeder para Artist-Movements
-
-## To-Do
-
 - BBDD, Crear Seeder para Artist-Art-Piece
 - BBDD, Crear Seeder para Tags
 - BBDD, Crear Seeder para Art-Piece-Tags
+
+## To-Do
 
 - HomePage, Hacer la frase de dedicatoría de la página inicial
 
