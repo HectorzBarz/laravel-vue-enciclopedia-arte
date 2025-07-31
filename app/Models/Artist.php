@@ -27,8 +27,6 @@ class Artist extends Model
         return $this->belongsTo(User::class);
     }
 
-
-
     public function artPieces()
     {
         return $this->belongsToMany(ArtPiece::class, 'art_piece_artist');

@@ -5,7 +5,7 @@ use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ArtistMovementController;
 use App\Http\Controllers\ArtPieceController;
 use App\Http\Controllers\MovementController;
-use App\Http\Controllers\SearchController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +20,7 @@ Route::prefix('artists')->controller(ArtistController::class)->group(function ()
 });
 
 Route::get('/artists/{id}/movements', [ArtistMovementController::class, 'getMovementsByArtist']);
+Route::get('/artists/{id}/artpieces', [ArtistController::class, 'getArtPieces']);
 
 Route::prefix('artpieces')->controller(ArtPieceController::class)->group(function () {
     Route::get('/', 'index');

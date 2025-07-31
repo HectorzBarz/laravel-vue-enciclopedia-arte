@@ -15,9 +15,9 @@ class ArtistMovementSeeder extends Seeder
     {
 
         ArtistMovement::insert([
-            ['artist_id' => 1, 'movement_id' => 1],
             ['artist_id' => 1, 'movement_id' => 2],
-            ['artist_id' => 1, 'movement_id' => 3],
+            ['artist_id' => 1, 'movement_id' => 5],
+            ['artist_id' => 1, 'movement_id' => 6],
             ['artist_id' => 2, 'movement_id' => 1],
             ['artist_id' => 3, 'movement_id' => 4],
             // Agrega más relaciones según necesites

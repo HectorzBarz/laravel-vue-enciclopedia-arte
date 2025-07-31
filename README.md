@@ -5,24 +5,16 @@ my programming and designing skills
 
 ## Changes Done
 
-- HomePage, show recent entries
-- BBDD, Created Seeder for Artist-Movements
-- BBDD, Crear Seeder para Artist-Art-Piece
-- Piece, Show the artist by creating a component called ArtistItemHolder
+- Added mor Movements Seeding
+- Artists, Movement tags now take you to the desired movement
+- Artists, Show artists art pieces (Random when seeding)
+- Artists, Artists Pieces redirect you to the corresponding piece
 
-## Working
-
-- PieceTags, Crear los tags de las piezas correspondientes
-- BBDD, Crear Seeder para Tags
-- BBDD, Crear Seeder para Art-Piece-Tags
+## In Progress
 
 ## To-Do
 
 - HomePage, Hacer la frase de dedicatoría de la página inicial
-
-- Obras, Mostrar en las obras el artista correspondiente
-
-- Artistas, Mostrar en la página de artistas algunas de sus obras
 
 - Movimientos, Mostrar en los movimientos sus obras representativas
 
