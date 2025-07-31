@@ -21,7 +21,7 @@ class MovementController extends Controller
      */
     public function home()
     {
-        $movements = Movement::limit(3)->get();
+        $movements = Movement::orderByDesc('id')->limit(3)->get();
         return response()->json($movements);
     }
 

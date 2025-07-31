@@ -22,7 +22,7 @@ class ArticleController extends Controller
      */
     public function home()
     {
-        $pieces = Article::limit(4)->get();
+        $pieces = Article::orderByDesc('id')->limit(4)->get();
         return response()->json($pieces);
     }
 

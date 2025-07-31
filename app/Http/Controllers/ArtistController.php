@@ -21,7 +21,7 @@ class ArtistController extends Controller
      */
     public function home()
     {
-        $artists = Artist::limit(3)->get();
+        $artists = Artist::orderByDesc('id')->limit(3)->get();
         return response()->json($artists);
     }
 
