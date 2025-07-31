@@ -8,7 +8,6 @@ class ArtPiece extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'artist_id',
         'title',
         'description',
         'date',
