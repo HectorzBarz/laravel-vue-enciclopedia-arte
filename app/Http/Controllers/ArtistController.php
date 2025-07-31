@@ -62,4 +62,12 @@ class ArtistController extends Controller
     {
         //
     }
+
+    public function getArtPieces($id)
+    {
+        $artist = Artist::findOrFail($id);
+        $artPieces = $artist->artPieces()->limit(3)->get();
+        return response()->json($artPieces);
+    }
+
 }

@@ -27,8 +27,6 @@ class ArtPiece extends Model
     }
 
 
-
-
     public function artists()
     {
         return $this->belongsToMany(Artist::class, 'art_piece_artist');

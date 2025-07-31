@@ -8,49 +8,55 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const artist = ref(null);
 const movements = ref(null);
+const pieces = ref(null);
 
 onMounted(async () => {
     try {
         const response = await axios.get(`/api/artists/${route.params.id}`);
         artist.value = response.data;
+
         const movementsResponse = await axios.get(
             `/api/artists/${route.params.id}/movements`,
         );
         movements.value = movementsResponse.data;
+
+        const piecesResponse = await axios.get(
+            `/api/artists/${route.params.id}/artpieces`,
+        );
+        pieces.value = piecesResponse.data;
     } catch (error) {
         console.error("Error al cargar el artista:", error);
     }
 });
 
-const pieces = [
-    {
-        id: 1,
-        img: "pieces/impresion-sol-naciente.jpg",
-        title: "Impresión, sol naciente",
-        date: "22/07/2025",
-        description: "",
-        tags: [""],
-        route: "/artpiece/",
-    },
-    {
-        id: 2,
-        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
-        title: "La Ejecución de Lady Jane Grey",
-        date: "22/07/2025",
-        description: "",
-        tags: [""],
-        route: "/artpiece/",
-    },
-    {
-        id: 3,
-        img: "pieces/ecce-hommo.jpg",
-        title: "Ecce Homo",
-        date: "22/07/2025",
-        description: "",
-        tags: [""],
-        route: "/artpiece/",
-    },
-];
+//     {
+//         id: 1,
+//         img: "pieces/impresion-sol-naciente.jpg",
+//         title: "Impresión, sol naciente",
+//         date: "22/07/2025",
+//         description: "",
+//         tags: [""],
+//         route: "/artpiece/",
+//     },
+//     {
+//         id: 2,
+//         img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
+//         title: "La Ejecución de Lady Jane Grey",
+//         date: "22/07/2025",
+//         description: "",
+//         tags: [""],
+//         route: "/artpiece/",
+//     },
+//     {
+//         id: 3,
+//         img: "pieces/ecce-hommo.jpg",
+//         title: "Ecce Homo",
+//         date: "22/07/2025",
+//         description: "",
+//         tags: [""],
+//         route: "/artpiece/",
+//     },
+// ];
 </script>
 <template>
     <div
@@ -81,7 +87,9 @@ const pieces = [
                             class="cursor-pointer rounded-sm border bg-violet-200 px-2.5 py-1 text-xl transition-colors delay-100 hover:bg-violet-300"
                             v-for="item in movements"
                         >
-                            {{ item.title }}
+                            <RouterLink :to="`/movements/${item.id}`">
+                                {{ item.title }}
+                            </RouterLink>
                         </p>
                     </div>
                 </div>
@@ -96,13 +104,13 @@ const pieces = [
                     {{ artist.description }}
                 </p>
                 <div
-                    class="flex flex-col justify-between gap-10 p-10 sm:p-26 md:flex-row md:justify-around md:px-10 md:py-5"
+                    class="flex flex-col justify-between gap-10 p-10 sm:p-26 md:flex-row md:justify-evenly md:px-10 md:py-5"
                 >
                     <ItemCardHolder
                         v-for="item in pieces"
                         :key="item.id"
                         :item="item"
-                        :route="item.route"
+                        :route="`/artpieces/`"
                     />
                 </div>
             </div>
