@@ -36,8 +36,8 @@ const router = createRouter({
             meta: { title: "Register" },
         },
         {
-            path: "/art-pieces/:id",
-            name: "art-pieces",
+            path: "/artpieces/:id",
+            name: "artpieces",
             component: () => import("@/src/components/pieces/ArtPieceView.vue"),
             meta: { title: "Piece" },
         },

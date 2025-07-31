@@ -5,12 +5,14 @@ my programming and designing skills
 
 ## Changes Done
 
-- HomePage, mostrar los mas recientes (orden descenciente)
+- HomePage, show recent entries
+- BBDD, Created Seeder for Artist-Movements
+- BBDD, Crear Seeder para Artist-Art-Piece
+- Piece, Show the artist by creating a component called ArtistItemHolder
 
 ## Working
 
-- BBDD, Crear Seeder para Artist-Movements
-- BBDD, Crear Seeder para Artist-Art-Piece
+- PieceTags, Crear los tags de las piezas correspondientes
 - BBDD, Crear Seeder para Tags
 - BBDD, Crear Seeder para Art-Piece-Tags
 
@@ -28,5 +30,3 @@ my programming and designing skills
 - Búsqueda, Filtrado de la página de búsqueda
 
 - Auth, Creación de usuarios con el sistema de Register/Login
-
-- PieceTags, Crear los tags de las piezas correspondientes

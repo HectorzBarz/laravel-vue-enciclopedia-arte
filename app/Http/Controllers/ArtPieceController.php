@@ -81,4 +81,12 @@ class ArtPieceController extends Controller
     {
         //
     }
+
+    public function getArtistByArtPiece($id)
+    {
+        $artPiece = ArtPiece::with('artists')->findOrFail($id);
+        return response()->json($artPiece->artists);
+    }
+
+
 }

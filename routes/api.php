@@ -21,12 +21,13 @@ Route::prefix('artists')->controller(ArtistController::class)->group(function ()
 
 Route::get('/artists/{id}/movements', [ArtistMovementController::class, 'getMovementsByArtist']);
 
-Route::prefix('art-pieces')->controller(ArtPieceController::class)->group(function () {
+Route::prefix('artpieces')->controller(ArtPieceController::class)->group(function () {
     Route::get('/', 'index');
     Route::get('/home', 'home');
-
     Route::get('{id}', 'show');
 });
+
+Route::get('/artpieces/{id}/artist', [ArtPieceController::class, 'getArtistByArtPiece']);
 
 Route::prefix('movements')->controller(MovementController::class)->group(function () {
     Route::get('/', 'index');

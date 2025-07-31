@@ -2,14 +2,20 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import { useRoute } from "vue-router";
+import ArtistItemHolder from "./ArtistItemHolder.vue";
 
 const route = useRoute();
 const piece = ref(null);
+const artist = ref(null);
 
 onMounted(async () => {
     try {
-        const response = await axios.get(`/api/art-pieces/${route.params.id}`);
+        const response = await axios.get(`/api/artpieces/${route.params.id}`);
         piece.value = response.data;
+        const artistResponse = await axios.get(
+            `/api/artpieces/${route.params.id}/artist`,
+        );
+        artist.value = artistResponse.data[0];
     } catch (error) {
         console.error("Error al cargar la obra:", error);
     }
@@ -43,9 +49,18 @@ onMounted(async () => {
                 >
                     {{ piece.title }}
                 </h1>
-                <h2 class="hidden px-5 text-4xl md:px-10 lg:text-4xl xl:flex">
+                <h2
+                    class="mb-5 hidden px-5 text-4xl md:px-10 lg:text-4xl xl:flex"
+                >
                     {{ piece.date }}
                 </h2>
+
+                <ArtistItemHolder
+                    class="hidden justify-center xl:flex"
+                    v-if="artist"
+                    :artist="artist"
+                    route="/artists/"
+                />
             </div>
         </section>
         <section class="rounded-xl bg-violet-200">
@@ -58,6 +73,12 @@ onMounted(async () => {
                 <h2 class="p-5 text-4xl md:px-10 lg:text-3xl xl:hidden">
                     {{ piece.date }}
                 </h2>
+                <ArtistItemHolder
+                    v-if="artist"
+                    class="flex justify-center xl:hidden"
+                    :artist="artist"
+                    route="/artists/"
+                />
                 <p
                     class="p-5 text-justify text-2xl sm:px-10 md:px-20 lg:px-20 lg:text-3xl xl:columns-2 xl:gap-20"
                 >

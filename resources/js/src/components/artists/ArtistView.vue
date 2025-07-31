@@ -30,7 +30,7 @@ const pieces = [
         date: "22/07/2025",
         description: "",
         tags: [""],
-        route: "/art-piece/",
+        route: "/artpiece/",
     },
     {
         id: 2,
@@ -39,7 +39,7 @@ const pieces = [
         date: "22/07/2025",
         description: "",
         tags: [""],
-        route: "/art-piece/",
+        route: "/artpiece/",
     },
     {
         id: 3,
@@ -48,7 +48,7 @@ const pieces = [
         date: "22/07/2025",
         description: "",
         tags: [""],
-        route: "/art-piece/",
+        route: "/artpiece/",
     },
 ];
 </script>

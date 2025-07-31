@@ -10,11 +10,14 @@ return new class extends Migration {
      */
     public function up(): void
     {
+
         Schema::create('artist_movements', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('artist_id')->constrained()->onDelete('cascade');
             $table->foreignId('movement_id')->constrained()->onDelete('cascade');
+
+            $table->primary(['artist_id', 'movement_id']);
         });
+
     }
 
     /**

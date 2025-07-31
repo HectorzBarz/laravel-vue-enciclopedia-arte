@@ -12,7 +12,7 @@ const articles = ref([]);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("/api/art-pieces/home");
+        const response = await axios.get("/api/artpieces/home");
         pieces.value = response.data;
 
         const artistResponse = await axios.get("/api/artists/home");
@@ -54,9 +54,8 @@ onMounted(async () => {
                             v-for="piece in pieces"
                             :key="piece.id"
                             :item="piece"
-                            route="/art-pieces/"
-                        >
-                        </ItemCardHolder>
+                            route="/artpieces/"
+                        />
                     </div>
                 </section>
 
@@ -119,7 +118,7 @@ onMounted(async () => {
                     </h3>
 
                     <div
-                        class="grid justify-around gap-10 px-5 sm:px-32 md:grid-cols-2 md:px-10 lg:grid-cols-3 xl:grid-cols-2"
+                        class="flex flex-col justify-around gap-10 px-10 sm:px-32 md:grid md:grid-cols-2 md:px-10 lg:grid lg:grid-cols-2 lg:items-center xl:grid xl:grid-cols-2"
                     >
                         <ItemCardHolder
                             v-for="(article, index) in articles"
