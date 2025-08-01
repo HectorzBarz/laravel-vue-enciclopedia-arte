@@ -103,6 +103,11 @@ function handleClick(item) {
     </transition>
     <!-- fin del dropdown inicial -->
 
+    <section class="absolute hidden sm:mx-5 sm:my-5 sm:flex sm:justify-start">
+        <RouterLink to="/search">
+            <span class="pi pi-search" style="font-size: 2rem" />
+        </RouterLink>
+    </section>
     <!-- menu de los items corrientes del menu cuando la resolución es adecuada      -->
     <section
         class="hidden sm:mx-5 sm:my-5 sm:flex sm:justify-between lg:justify-end lg:gap-5"
