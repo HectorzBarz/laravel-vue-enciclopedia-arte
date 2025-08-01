@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from "vue";
-import { RouterLink } from "vue-router";
+import { ref, onMounted } from "vue";
+import { RouterLink, useRouter } from "vue-router";
 import { useSearchStore } from "../../stores/SearchStore";
-import { useRouter } from "vue-router";
+import axios from "axios";
 
 const store = useSearchStore();
 const router = useRouter();
@@ -31,6 +31,19 @@ function handleClick(item) {
     // Redirige a la ruta correspondiente
     router.push(item.route);
 }
+
+const authStatus = ref(null);
+
+onMounted(async () => {
+    try {
+        const response = await axios.get("/api/auth-status", {
+            withCredentials: true,
+        });
+        authStatus.value = response.data.authenticated;
+    } catch (error) {
+        authStatus.value = false;
+    }
+});
 </script>
 
 <template>
@@ -103,11 +116,6 @@ function handleClick(item) {
     </transition>
     <!-- fin del dropdown inicial -->
 
-    <section class="absolute hidden sm:mx-5 sm:my-5 sm:flex sm:justify-start">
-        <RouterLink to="/search">
-            <span class="pi pi-search" style="font-size: 2rem" />
-        </RouterLink>
-    </section>
     <!-- menu de los items corrientes del menu cuando la resolución es adecuada      -->
     <section
         class="hidden sm:mx-5 sm:my-5 sm:flex sm:justify-between lg:justify-end lg:gap-5"
@@ -123,4 +131,10 @@ function handleClick(item) {
     </section>
 
     <!-- fin del menu correiente de items -->
+
+    <div class="bg-red-200">
+        <p v-if="authStatus === true">Sesión iniciada</p>
+        <p v-else-if="authStatus === false">Sesión no iniciada</p>
+        <p v-else>Cargando estado de sesión...</p>
+    </div>
 </template>

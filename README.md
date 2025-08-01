@@ -5,22 +5,16 @@ my programming and designing skills
 
 ## Changes Done
 
-- Nav, Added an icon for redirect to search view without filters
-- Movements, Show the movements reprenstative pieces (Random when seeded)
-- Movements, Representative pieces card redirects to the piece
-- Other, Comment components
-
 ## In Progress
 
+- Auth, Creación de usuarios con el sistema de Register
+- Auth, Logout button
 - HomePage, Hacer la frase de dedicatoría de la página inicial
-
-- Búsqueda, Mostrar todos los resultados en la página de búsqueda
 
 ## To-Do
 
+- Búsqueda, Mostrar todos los resultados en la página de búsqueda
 - Búsqueda, Filtrado de la página de búsqueda (Checkboxes)
 - Búsqueda, Barra de búsqueda funcional
-
-- Auth, Creación de usuarios con el sistema de Register/Login
 
 - Front, Re diseñar la página

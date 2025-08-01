@@ -9,7 +9,7 @@
             <div
                 class="items-base py-5 lg:border-r-2 lg:border-violet-200 lg:px-10"
             >
-                <form name="login-form">
+                <form name="login-form" action="/login" method="post">
                     <!-- input de email -->
                     <div class="mb-10 flex flex-col">
                         <label for="email" class="text-2xl"
@@ -17,6 +17,8 @@
                         </label>
                         <input
                             id="email"
+                            name="email"
+                            value="{{ old('email') }}"
                             type="email"
                             class="h-12 rounded-sm border bg-white px-2 text-xl"
                             placeholder="Introduce tu correo electrónico..."
@@ -33,9 +35,11 @@
                         </label>
                         <input
                             id="password"
+                            name="password"
                             type="password"
                             class="h-12 rounded-sm border bg-white px-2 text-xl"
                             placeholder="Introduce tu contraseña..."
+                            autocomplete="password"
                         />
                     </div>
                     <!-- FIN input de password -->
