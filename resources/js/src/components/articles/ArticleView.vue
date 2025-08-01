@@ -1,49 +1,39 @@
 <script setup>
-const article = {
-    id: 1,
-    img: "article/drives-me-crazy.jpg",
-    title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                vitae turpis id lacus dictum lacinia volutpat ut velit. Cras
-                vitae lorem imperdiet risus viverra commodo. In malesuada
-                posuere turpis, ut commodo felis efficitur et. In pharetra
-                tellus vitae porttitor vehicula. Donec ut eros bibendum,
-                pharetra leo eget, semper sapien. Morbi quis lacinia quam. In
-                dictum eros a elementum lacinia. Phasellus sit amet consequat
-                lectus, id ultricies nisl. Integer porttitor sapien eu varius
-                fermentum. Proin ullamcorper rhoncus mauris, ut viverra est
-                convallis cursus. Quisque at posuere ipsum. Integer turpis nunc,
-                efficitur vel euismod et, sodales nec urna. Sed gravida ex id
-                sodales vehicula. Pellentesque imperdiet purus congue, convallis
-                odio ac, tincidunt enim. Quisque consequat non ligula in
-                molestie. Praesent pulvinar metus mi, at pharetra velit tempor
-                ac.
+import { ref, onMounted } from "vue";
+import axios from "axios";
+import { useRoute } from "vue-router";
 
-                Nam neque metus, aliquet et luctus in, commodo ac sapien.
-                Curabitur at metus condimentum ipsum dapibus sodales imperdiet
-                vel elit. Curabitur cursus mauris a velit fringilla finibus.
-                Proin non nulla varius, facilisis libero vitae, mattis est.
-                Nullam suscipit orci quis velit pretium, at placerat odio
-                consectetur. Ut est metus, venenatis non fermentum et, iaculis
-                auctor erat. Nullam ut enim pulvinar, elementum sem ac, vehicula
-                dui.`,
-    date: "14/07/2025 11:23",
-    type: "Artistas",
-};
+const route = useRoute();
+
+// variable de la información del artículo
+const article = ref(null);
+
+// asignar la información de BBDD a la variable
+onMounted(async () => {
+    try {
+        const response = await axios.get(`/api/articles/${route.params.id}`);
+        article.value = response.data;
+    } catch (error) {
+        console.error("Error al cargar el artista:", error);
+    }
+});
 </script>
 
 <template>
-    <div class="my-10 rounded-xl bg-violet-100 sm:mx-5 sm:p-5">
+    <!-- si el artículo existe se muestra su información -->
+    <div class="my-10 rounded-xl bg-violet-100 sm:mx-5 sm:p-5" v-if="article">
         <section
             class="mx-1 mb-5 md:mx-5 lg:mx-20 xl:mx-5 xl:grid xl:items-center"
         >
+            <!-- imagen del artículo -->
             <Image
                 :src="`/images/${article.img}`"
                 alt="piece-image"
-                class="content-center"
+                class="content-center justify-center"
                 preview
             />
 
+            <!-- información básica del artículo -->
             <h1 class="p-5 text-center text-4xl underline md:px-10 lg:text-5xl">
                 {{ article.title }}
             </h1>
@@ -59,6 +49,11 @@ const article = {
             >
                 {{ article.date }}
             </p>
+        </section>
+    </div>
+    <div v-else>
+        <section class="m-20 flex justify-center">
+            <ProgressSpinner />
         </section>
     </div>
 </template>

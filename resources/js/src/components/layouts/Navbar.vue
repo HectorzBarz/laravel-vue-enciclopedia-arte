@@ -89,7 +89,7 @@ function handleClick(item) {
     >
         <div v-if="menuVisible" class="absolute z-50 w-full sm:hidden">
             <ul
-                class="rounded-b-md bg-violet-300 px-2 text-xl shadow-lg shadow-gray-600"
+                class="rounded-b-md bg-violet-300 px-2 text-xl shadow-lg shadow-violet-950"
             >
                 <li
                     class="cursor-pointer py-1 hover:text-violet-400 hover:underline"
@@ -103,6 +103,11 @@ function handleClick(item) {
     </transition>
     <!-- fin del dropdown inicial -->
 
+    <section class="absolute hidden sm:mx-5 sm:my-5 sm:flex sm:justify-start">
+        <RouterLink to="/search">
+            <span class="pi pi-search" style="font-size: 2rem" />
+        </RouterLink>
+    </section>
     <!-- menu de los items corrientes del menu cuando la resolución es adecuada      -->
     <section
         class="hidden sm:mx-5 sm:my-5 sm:flex sm:justify-between lg:justify-end lg:gap-5"

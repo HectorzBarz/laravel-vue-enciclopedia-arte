@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('art_pieces', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('artist_id')->constrained('artists');
             $table->string('title');
-            $table->year('year');
             $table->longText('description');
+            $table->integer('date');
+            $table->string('img');
         });
     }
 

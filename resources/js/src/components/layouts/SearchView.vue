@@ -1,6 +1,8 @@
 <script setup>
 import ItemCardHolder from "./ItemCardHolder.vue";
 import { useSearchStore } from "../../stores/SearchStore";
+import { ref, onMounted } from "vue";
+import axios from "axios";
 
 // store de las checkboxes
 const store = useSearchStore();
@@ -57,21 +59,31 @@ const menuMovements = [
     "Arte Povera",
 ];
 
+// const items = ref([]);
+
+// onMounted(async () => {
+//     try {
+//         const response = await axios.get("/api/search");
+//         items.value = response.data;
+//     } catch (error) {
+//         console.error("Error al cargar los artistas:", error);
+//     }
+// });
 const items = [
     {
-        img: "article/drives-me-crazy.jpg",
+        img: "articles/drives-me-crazy.jpg",
         title: "Anna Weyant conquista el Thyssen: una mirada contemporánea con alma antigua",
         date: "14/07/2025",
         route: "/articles/",
     },
     {
-        img: "artist/francisco-de-goya.jpg",
+        img: "artists/francisco-de-goya.jpg",
         title: "Francisco de Goya",
         date: "22/07/2025",
         route: "/artists/",
     },
     {
-        img: "artist/diego-velazquez.jpg",
+        img: "artists/diego-velazquez.jpg",
         title: "Diego Velázquez",
         date: "22/07/2025",
         route: "/artists/",

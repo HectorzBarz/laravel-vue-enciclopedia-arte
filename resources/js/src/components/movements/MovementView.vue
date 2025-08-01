@@ -1,91 +1,33 @@
 <script setup>
 import ItemCardHolder from "../layouts/ItemCardHolder.vue";
+import { ref, onMounted } from "vue";
+import axios from "axios";
+import { useRoute } from "vue-router";
 
-const movement = {
-    id: 1,
-    img: "movements/san-jeronimo-escribiendo.jpg",
-    title: "Barroco",
-    description: `El Barroco trasciende del arte. Fue un período cultural, científico, tecnológico, filosófico, político, económico… Aunque probablemente sea en el arte donde mejor se ilustra el clima del momento.
+const route = useRoute();
 
-El siglo XVII nace con cambios políticos (los estados modernos), religiosos (la contrarreforma), tecnológicos (el telescopio), económicos (crisis) y sociales (la burguesía). Con esa atmósfera surge un estilo anti-clásico, menos racional y más apasionado, una reacción contra lo anterior como suele -y debe- pasar a lo largo de la historia del arte.
+// variables reactivas para los datos de la BBDD
+const movement = ref(null);
+const pieces = ref(null);
 
-El arte se volvió dinámico, teatral, efectista. Busca sorprender, asombrar. Eso no quiere decir que se elimine el realismo. Todo lo contrario: se recrudece. En esa época de crisis económica, el hombre se enfrenta de forma más radical a la realidad.
+// conseguimos los datos de la BBDD gracias a la api local
+onMounted(async () => {
+    try {
+        const response = await axios.get(`/api/movements/${route.params.id}`);
+        movement.value = response.data;
 
-Aún así se distorsiona todo, se violenta. Se potencian los contrastes (el tenebrismo) y el desequilibrio.`,
-    start: 1600,
-    end: 1750,
-};
-
-const pieces = [
-    {
-        id: 1,
-        img: "pieces/impresion-sol-naciente.jpg",
-        title: "Impresión, sol naciente",
-        date: "1872",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 2,
-        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
-        title: "La Ejecución de Lady Jane Grey",
-        date: "1833",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 3,
-        img: "pieces/ecce-hommo.jpg",
-        title: "Ecce Homo",
-        date: "1871",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 4,
-        img: "pieces/impresion-sol-naciente.jpg",
-        title: "Impresión, sol naciente",
-        date: "1872",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 5,
-        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
-        title: "La Ejecución de Lady Jane Grey",
-        date: "1833",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 6,
-        img: "pieces/ecce-hommo.jpg",
-        title: "Ecce Homo",
-        date: "1871",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 7,
-        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
-        title: "La Ejecución de Lady Jane Grey",
-        date: "1833",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 8,
-        img: "pieces/ecce-hommo.jpg",
-        title: "Ecce Homo",
-        date: "1871",
-        description: "",
-        tags: [""],
-    },
-];
+        const piecesResponse = await axios.get(
+            `/api/movements/${route.params.id}/artpieces`,
+        );
+        pieces.value = piecesResponse.data;
+    } catch (error) {
+        console.error("Error al cargar los datos del movimiento:", error);
+    }
+});
 </script>
 
 <template>
-    <div class="bg-violet-100 sm:mx-5 sm:p-5">
+    <div class="bg-violet-100 sm:mx-5 sm:p-5" v-if="movement">
         <!-- seccion del contenido principal del movimiento  -->
         <div class="grid items-center justify-center xl:grid-cols-2">
             <section>
@@ -127,10 +69,15 @@ const pieces = [
                     v-for="piece in pieces"
                     :key="piece.id"
                     :item="piece"
-                    route="/art-piece/"
+                    route="/artpieces/"
                 />
             </div>
         </section>
         <!-- FIN seccion obras representativas -->
+    </div>
+    <div v-else>
+        <section class="m-20 flex justify-center">
+            <ProgressSpinner />
+        </section>
     </div>
 </template>

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *
@@ -13,8 +14,15 @@ class Article extends Model
      */
     protected $fillable = [
         'title',
-        'body',
+        'description',
         'type',
-        'published_at',
+        'img',
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
