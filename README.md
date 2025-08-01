@@ -5,10 +5,7 @@ my programming and designing skills
 
 ## Changes Done
 
-- Nav, Added an icon for redirect to search view without filters
-- Movements, Show the movements reprenstative pieces (Random when seeded)
-- Movements, Representative pieces card redirects to the piece
-- Other, Comment components
+- Version 2.5
 
 ## In Progress
 
