@@ -36,6 +36,8 @@ Route::prefix('movements')->controller(MovementController::class)->group(functio
     Route::get('{id}', 'show');
 });
 
+Route::get('/movements/{id}/artpieces', [MovementController::class, 'getArtPieces']);
+
 Route::prefix('articles')->controller(ArticleController::class)->group(function () {
     Route::get('/', 'index');
     Route::get('/home', 'home');

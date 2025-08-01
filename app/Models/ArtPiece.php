@@ -19,6 +19,11 @@ class ArtPiece extends Model
         return $this->belongsToMany(Tag::class, 'art_piece_tag');
     }
 
+    public function movement()
+    {
+        return $this->belongsToMany(Movement::class, 'movement_art_piece');
+    }
+
 
     public function user()
     {

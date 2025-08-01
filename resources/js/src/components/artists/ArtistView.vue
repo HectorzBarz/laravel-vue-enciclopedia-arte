@@ -6,10 +6,13 @@ import axios from "axios";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
+
+// datos de la BBDD
 const artist = ref(null);
 const movements = ref(null);
 const pieces = ref(null);
 
+// Asignar datos de la BBDD gracias a api local
 onMounted(async () => {
     try {
         const response = await axios.get(`/api/artists/${route.params.id}`);
@@ -28,45 +31,19 @@ onMounted(async () => {
         console.error("Error al cargar el artista:", error);
     }
 });
-
-//     {
-//         id: 1,
-//         img: "pieces/impresion-sol-naciente.jpg",
-//         title: "Impresión, sol naciente",
-//         date: "22/07/2025",
-//         description: "",
-//         tags: [""],
-//         route: "/artpiece/",
-//     },
-//     {
-//         id: 2,
-//         img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
-//         title: "La Ejecución de Lady Jane Grey",
-//         date: "22/07/2025",
-//         description: "",
-//         tags: [""],
-//         route: "/artpiece/",
-//     },
-//     {
-//         id: 3,
-//         img: "pieces/ecce-hommo.jpg",
-//         title: "Ecce Homo",
-//         date: "22/07/2025",
-//         description: "",
-//         tags: [""],
-//         route: "/artpiece/",
-//     },
-// ];
 </script>
 <template>
+    <!-- si existe el artista muestra la información -->
     <div
         class="my-10 flex h-full flex-col rounded-2xl bg-violet-100 sm:p-5 lg:mx-20 xl:mx-16 xl:flex-row"
         v-if="artist"
     >
+        <!-- seccion de la información del artista -->
         <section class="border-b-2 border-violet-200 xl:border-0">
             <div
                 class="flex h-full w-full flex-col items-center border-violet-200 px-5 py-5 lg:min-w-96 lg:flex-row lg:items-start lg:justify-start lg:border-b-0 xl:flex-col xl:border-r-2"
             >
+                <!-- artist image -->
                 <div>
                     <Image
                         :src="`/images/${artist.img}`"
@@ -74,6 +51,8 @@ onMounted(async () => {
                         preview
                     />
                 </div>
+
+                <!-- artists info -->
                 <div class="px-5 py-5">
                     <p class="mb-1 text-4xl">{{ artist.name }}</p>
                     <p class="mb-2 text-2xl">
@@ -83,6 +62,7 @@ onMounted(async () => {
                     <div
                         class="flex flex-col gap-5 text-center sm:flex-row sm:text-start"
                     >
+                        <!-- artist movements -->
                         <p
                             class="cursor-pointer rounded-sm border bg-violet-200 px-2.5 py-1 text-xl transition-colors delay-100 hover:bg-violet-300"
                             v-for="item in movements"
@@ -95,7 +75,9 @@ onMounted(async () => {
                 </div>
             </div>
         </section>
+        <!-- FIN seccion de la información del artista -->
 
+        <!-- seccón de algunas de las obras del artista -->
         <section>
             <div class="h-full w-full">
                 <p
@@ -115,6 +97,7 @@ onMounted(async () => {
                 </div>
             </div>
         </section>
+        <!-- FIN seccón de algunas de las obras del artista -->
     </div>
     <div v-else>
         <section class="m-20 flex justify-center">
