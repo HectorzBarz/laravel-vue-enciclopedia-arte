@@ -78,4 +78,11 @@ class MovementController extends Controller
     {
         //
     }
+
+    public function getArtPieces($id)
+    {
+        $movement = Movement::findOrFail($id);
+        $artPieces = $movement->artPieces()->limit(8)->get();
+        return response()->json($artPieces);
+    }
 }

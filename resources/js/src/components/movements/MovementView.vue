@@ -5,83 +5,25 @@ import axios from "axios";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-const movement = ref(null);
 
+// variables reactivas para los datos de la BBDD
+const movement = ref(null);
+const pieces = ref(null);
+
+// conseguimos los datos de la BBDD gracias a la api local
 onMounted(async () => {
     try {
         const response = await axios.get(`/api/movements/${route.params.id}`);
         movement.value = response.data;
+
+        const piecesResponse = await axios.get(
+            `/api/movements/${route.params.id}/artpieces`,
+        );
+        pieces.value = piecesResponse.data;
     } catch (error) {
-        console.error("Error al cargar la obra:", error);
+        console.error("Error al cargar los datos del movimiento:", error);
     }
 });
-
-const pieces = [
-    {
-        id: 1,
-        img: "pieces/impresion-sol-naciente.jpg",
-        title: "Impresión, sol naciente",
-        date: "1872",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 2,
-        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
-        title: "La Ejecución de Lady Jane Grey",
-        date: "1833",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 3,
-        img: "pieces/ecce-hommo.jpg",
-        title: "Ecce Homo",
-        date: "1871",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 4,
-        img: "pieces/impresion-sol-naciente.jpg",
-        title: "Impresión, sol naciente",
-        date: "1872",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 5,
-        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
-        title: "La Ejecución de Lady Jane Grey",
-        date: "1833",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 6,
-        img: "pieces/ecce-hommo.jpg",
-        title: "Ecce Homo",
-        date: "1871",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 7,
-        img: "pieces/la-ejecucion-de-lady-jane-grey.jpg",
-        title: "La Ejecución de Lady Jane Grey",
-        date: "1833",
-        description: "",
-        tags: [""],
-    },
-    {
-        id: 8,
-        img: "pieces/ecce-hommo.jpg",
-        title: "Ecce Homo",
-        date: "1871",
-        description: "",
-        tags: [""],
-    },
-];
 </script>
 
 <template>
@@ -127,7 +69,7 @@ const pieces = [
                     v-for="piece in pieces"
                     :key="piece.id"
                     :item="piece"
-                    route="/art-piece/"
+                    route="/artpieces/"
                 />
             </div>
         </section>

@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             ArtistMovementSeeder::class,
             ArtPieceArtistSeeder::class,
+            MovementArtPiecesSeeder::class,
         ]);
 
     }

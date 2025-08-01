@@ -5,9 +5,12 @@ import { useRoute } from "vue-router";
 import ArtistItemHolder from "./ArtistItemHolder.vue";
 
 const route = useRoute();
+
+// variables de los datos de la BBDD
 const piece = ref(null);
 const artist = ref(null);
 
+// cosneguir datos de la BBDD gracias a api local
 onMounted(async () => {
     try {
         const response = await axios.get(`/api/artpieces/${route.params.id}`);
@@ -23,7 +26,9 @@ onMounted(async () => {
 </script>
 
 <template>
+    <!-- si existe la pieza la muestra -->
     <div class="my-10 rounded-xl bg-violet-100 sm:mx-5 sm:p-5" v-if="piece">
+        <!-- seccion de muestra de la pieza en resoluciones grandes -->
         <section class="mx-1 mb-5 md:mx-5 lg:mx-20 xl:mx-5 xl:flex">
             <Image
                 :src="`/images/${piece.img}`"
@@ -34,16 +39,6 @@ onMounted(async () => {
             <div
                 class="mb-5 sm:px-5 md:mb-10 xl:content-center xl:items-center"
             >
-                <div
-                    class="my-5 grid gap-2 sm:flex sm:justify-around lg:mx-10 lg:gap-5"
-                >
-                    <p
-                        class="mx-10 cursor-pointer rounded-sm border bg-violet-200 px-2.5 py-1 text-center text-xl transition-colors delay-100 hover:bg-violet-300 sm:mx-0 lg:text-2xl"
-                        v-for="tag in piece.tags"
-                    >
-                        {{ tag }}
-                    </p>
-                </div>
                 <h1
                     class="hidden px-5 text-4xl underline md:px-10 lg:text-5xl xl:flex"
                 >
@@ -63,6 +58,9 @@ onMounted(async () => {
                 />
             </div>
         </section>
+        <!-- FIN seccion de muestra de la pieza en resoluciones grandes -->
+
+        <!-- sección para mostrar la pieza en resoluciones pequeñas -->
         <section class="rounded-xl bg-violet-200">
             <main class="text-center">
                 <h1
@@ -86,7 +84,9 @@ onMounted(async () => {
                 </p>
             </main>
         </section>
+        <!-- FINsección para mostrar la pieza en resoluciones pequeñas -->
     </div>
+
     <div v-else>
         <section class="m-20 flex justify-center">
             <ProgressSpinner />

@@ -4,8 +4,11 @@ import axios from "axios";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
+
+// variable de la información del artículo
 const article = ref(null);
 
+// asignar la información de BBDD a la variable
 onMounted(async () => {
     try {
         const response = await axios.get(`/api/articles/${route.params.id}`);
@@ -17,10 +20,12 @@ onMounted(async () => {
 </script>
 
 <template>
+    <!-- si el artículo existe se muestra su información -->
     <div class="my-10 rounded-xl bg-violet-100 sm:mx-5 sm:p-5" v-if="article">
         <section
             class="mx-1 mb-5 md:mx-5 lg:mx-20 xl:mx-5 xl:grid xl:items-center"
         >
+            <!-- imagen del artículo -->
             <Image
                 :src="`/images/${article.img}`"
                 alt="piece-image"
@@ -28,6 +33,7 @@ onMounted(async () => {
                 preview
             />
 
+            <!-- información básica del artículo -->
             <h1 class="p-5 text-center text-4xl underline md:px-10 lg:text-5xl">
                 {{ article.title }}
             </h1>

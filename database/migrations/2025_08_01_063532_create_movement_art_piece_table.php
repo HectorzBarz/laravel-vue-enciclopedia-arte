@@ -10,13 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-
-        Schema::create('art_piece_tag', function (Blueprint $table) {
-            $table->id();
+        Schema::create('movement_art_piece', function (Blueprint $table) {
+            $table->foreignId('movement_id')->constrained()->onDelete('cascade');
             $table->foreignId('art_piece_id')->constrained()->onDelete('cascade');
-            $table->foreignId('tag_id')->constrained()->onDelete('cascade');
+            $table->primary(['movement_id', 'art_piece_id']);
         });
-
     }
 
     /**
@@ -24,6 +22,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('art_piece_tag');
+        Schema::dropIfExists('movement_art_pieces');
     }
 };
